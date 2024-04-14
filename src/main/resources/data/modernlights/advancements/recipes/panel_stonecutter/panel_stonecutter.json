@@ -1,0 +1,40 @@
+{
+  "parent": "modernlights:recipes/root",
+  "rewards": {
+    "recipes": [
+      "modernlights:ceiling_light_stonecutter",
+      "modernlights:mini_light_stonecutter"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "modernlights:panel"
+          }
+        ]
+      }
+    },
+    "has_recipe_ceiling_light": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:ceiling_light_craft"
+      }
+    },
+    "has_recipe_mini_light": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:mini_light_craft"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_recipe_ceiling_light",
+      "has_recipe_mini_light"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "modernlights:recipes/root",
+  "rewards": {
+    "recipes": [
+      "modernlights:luminous_block_orange_full_conv"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "modernlights:luminous_block_orange_full"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:luminous_block_orange_full_conv"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_recipe"
+    ]
+  ]
+}

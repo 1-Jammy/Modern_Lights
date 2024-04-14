@@ -1,0 +1,56 @@
+{
+  "parent": "modernlights:recipes/root",
+  "rewards": {
+    "recipes": [
+      "modernlights:luminous_slab_blue_stonecutter",
+      "modernlights:panel_blue_stonecutter",
+      "modernlights:mini_luminous_block_blue_full_stonecutter",
+      "modernlights:mini_luminous_block_blue_stonecutter"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "modernlights:luminous_block_green"
+          }
+        ]
+      }
+    },
+    "has_recipe_slab": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:luminous_slab_green_stonecutter"
+      }
+    },
+    "has_recipe_mini_block_full": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:mini_luminous_block_green_full_stonecutter"
+      }
+    },
+    "has_recipe_mini_block": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:mini_luminous_block_green_stonecutter"
+      }
+    },
+    "has_recipe_panel": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:panel_green_stonecutter"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_recipe_slab",
+      "has_recipe_mini_block_full",
+      "has_recipe_mini_block",
+      "has_recipe_panel"
+    ]
+  ]
+}

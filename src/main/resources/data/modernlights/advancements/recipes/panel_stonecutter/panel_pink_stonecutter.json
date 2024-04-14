@@ -1,0 +1,40 @@
+{
+  "parent": "modernlights:recipes/root",
+  "rewards": {
+    "recipes": [
+      "modernlights:ceiling_light_pink_stonecutter",
+      "modernlights:mini_light_pink_stonecutter"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "modernlights:panel_pink"
+          }
+        ]
+      }
+    },
+    "has_recipe_ceiling_light": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:ceiling_light_pink_craft"
+      }
+    },
+    "has_recipe_mini_light": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:mini_light_pink_craft"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_recipe_ceiling_light",
+      "has_recipe_mini_light"
+    ]
+  ]
+}

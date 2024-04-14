@@ -1,0 +1,24 @@
+{
+    "variants": {
+        "type=bottom,lit=true": {
+            "model": "modernlights:block/slabf/bottom/luminous_slab_gray_full"
+        },
+        "type=double,lit=true": {
+            "model": "modernlights:block/full/on/luminous_block_gray_full"
+        },
+        "type=top,lit=true": {
+            "model": "modernlights:block/slabf/top/luminous_slab_gray_full"
+        },
+
+
+        "type=bottom,lit=false": {
+            "model": "modernlights:block/slabf/off/luminous_full_slab"
+        },
+        "type=double,lit=false": {
+            "model": "modernlights:block/full/off/luminous_block_full_off"
+        },
+        "type=top,lit=false": {
+            "model": "modernlights:block/slabf/off/luminous_slab_full_top"
+        }
+    }
+}

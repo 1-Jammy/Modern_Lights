@@ -1,0 +1,7 @@
+{
+  "parent": "modernlights:template/template_mini_block",
+  "textures": {
+    "all": "modernlights:block/block/off/luminous_block_off",
+    "particle": "modernlights:block/block/off/luminous_block_off"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "modernlights:template/template_mini_light",
+  "textures": {
+    "all": "modernlights:block/mini_light/on/mini_light_magenta",
+    "particle": "modernlights:block/mini_light/on/mini_light_magenta"
+  }
+}

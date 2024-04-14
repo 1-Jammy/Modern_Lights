@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "modernlights:block/block/off/luminous_block_off"
+    },
+    "lit=true": {
+      "model": "modernlights:block/block/on/luminous_block_gray"
+    }
+  }
+}

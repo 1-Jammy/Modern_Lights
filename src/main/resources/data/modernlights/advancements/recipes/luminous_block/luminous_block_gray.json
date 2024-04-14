@@ -1,0 +1,32 @@
+{
+  "parent": "modernlights:recipes/root",
+  "rewards": {
+    "recipes": [
+      "modernlights:luminous_block_gray_craft"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "modernlights:luminous_block"
+          }
+        ]
+      }
+    },
+    "has_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "modernlights:luminous_block_gray_craft"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_recipe"
+    ]
+  ]
+}

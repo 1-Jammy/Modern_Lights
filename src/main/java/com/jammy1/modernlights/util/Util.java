@@ -125,7 +125,7 @@ public class Util {
     }
 
     //Provide faces for FACING block state
-    public static final VoxelShape Shape(BlockState state, Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
+    public static final VoxelShape voxelShapeMaker(BlockState state, Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
 
         switch (face) {
             case WALL -> {

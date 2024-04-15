@@ -22,7 +22,7 @@ public class PanelBlock extends ToggleablePlus {
         Direction dir = state.get(FACING);
         WallMountLocation face = state.get(FACE);
 
-        return Util.Shape(state, dir, face,
+        return Util.voxelShapeMaker(state, dir, face,
                 VoxelShapes.cuboid(0, 0, 0.9375, 1, 1, 1),
                 VoxelShapes.cuboid(0, 0, 0, 1, 1, 0.0625),
                 VoxelShapes.cuboid(0, 0, 0, 0.0625, 1, 1),

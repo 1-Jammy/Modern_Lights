@@ -103,13 +103,4 @@ public class ToggleableSlab extends SlabBlock {
         }
         return blockState2;
     }
-
-/*    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
-
-        Util.noise(state, world, pos, player, hand, hit, LIT);
-        Util.changeState(state, world, pos, LIT);
-        return ActionResult.SUCCESS;
-    }*/
 }

@@ -12,7 +12,7 @@
 
 
         "type=bottom,lit=false": {
-            "model": "modernlights:block/slabf/off/luminous_full_slab"
+            "model": "modernlights:block/slabf/off/luminous_slab_full"
         },
         "type=double,lit=false": {
             "model": "modernlights:block/full/off/luminous_block_full_off"

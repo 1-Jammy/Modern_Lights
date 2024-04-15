@@ -9,6 +9,8 @@
         "type=top,lit=true": {
             "model": "modernlights:block/slab/top/luminous_slab_pink"
         },
+
+
         "type=bottom,lit=false": {
             "model": "modernlights:block/slab/off/luminous_slab"
         },

@@ -9,8 +9,6 @@
         "type=top,lit=true": {
             "model": "modernlights:block/slabf/top/luminous_slab_orange_full"
         },
-
-
         "type=bottom,lit=false": {
             "model": "modernlights:block/slabf/off/luminous_slab_full"
         },
@@ -20,4 +18,5 @@
         "type=top,lit=false": {
             "model": "modernlights:block/slabf/off/luminous_slab_full_top"
         }
+    }
 }

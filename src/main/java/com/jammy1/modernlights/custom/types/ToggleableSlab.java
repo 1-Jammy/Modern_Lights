@@ -82,7 +82,7 @@ public class ToggleableSlab extends SlabBlock {
 
     @Override // Letting Minecraft know that there are FOUR properties in this block
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(TYPE, LIT,WATERLOGGED);
+        stateManager.add(TYPE, LIT, WATERLOGGED);
     }
 
     @Override

@@ -25,16 +25,30 @@ public class ToggleablePlus extends WallMountedBlock {
 
     protected ToggleablePlus(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState()
-                .with(FACING, Direction.NORTH).with(FACE, WallMountLocation.WALL).with(LIT, true));
+        this.setDefaultState((BlockState) ((BlockState) ((BlockState) (this.stateManager.getDefaultState())
+                .with(FACING, Direction.NORTH)).with(FACE, WallMountLocation.WALL)).with(LIT, true));
     }
+
+    // TODO:  Fix block placement issue
 
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())).with(FACING, ctx.getPlayerLookDirection().getOpposite())
-                .with(FACE, );
+        BlockState blockState = this.getDefaultState();
+        return (BlockState)blockState.with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
     }
+
+    private WallMountLocation getFaceState(ItemPlacementContext ctx){
+
+        Direction dir = ctx.getPlayerLookDirection();
+
+        return switch (dir) {
+            case UP -> WallMountLocation.CEILING;
+            case DOWN -> WallMountLocation.FLOOR;
+            default -> WallMountLocation.WALL;
+        };
+    }
+
 
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {

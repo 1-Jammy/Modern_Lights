@@ -28,7 +28,6 @@ public class ToggleableSlab extends SlabBlock {
     public static final EnumProperty<SlabType> TYPE;
     public static final BooleanProperty WATERLOGGED;
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
-    public static final BooleanProperty POWERED = BooleanProperty.of("powered");
 
     static {
         TYPE = Properties.SLAB_TYPE;
@@ -38,7 +37,7 @@ public class ToggleableSlab extends SlabBlock {
 
     public ToggleableSlab(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(TYPE, SlabType.BOTTOM).with(LIT,true).with(POWERED,false).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(TYPE, SlabType.BOTTOM).with(LIT,true).with(WATERLOGGED, false));
     }
 
     @Override
@@ -51,8 +50,7 @@ public class ToggleableSlab extends SlabBlock {
             if (bl) {
                 world.scheduleBlockTick(pos, this, 1);
             } else {
-                world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS); // Then set LIT = false
-                state.cycle(LIT);
+                world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS); // Then set LIT = false
             }
         }
     }
@@ -71,20 +69,20 @@ public class ToggleableSlab extends SlabBlock {
         return ActionResult.SUCCESS;
     }
 
+
     // check if the block is receiving redstone signal or not every tick
     // If not, then set LIT to false
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        // If forceLit == True, don't check if the block is receiving redstone signal
 
-        if (!world.isReceivingRedstonePower(pos)) {
-            world.setBlockState(pos, state.cycle(POWERED), Block.NOTIFY_LISTENERS);
+        if (state.get(LIT) && !world.isReceivingRedstonePower(pos)) {
+            world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
         }
     }
 
     @Override // Letting Minecraft know that there are FOUR properties in this block
     protected void appendProperties(StateManager.Builder<Block, BlockState> stateManager) {
-        stateManager.add(TYPE, LIT, POWERED, WATERLOGGED);
+        stateManager.add(TYPE, LIT,WATERLOGGED);
     }
 
     @Override
@@ -96,10 +94,9 @@ public class ToggleableSlab extends SlabBlock {
         if (blockState.isOf(this)) {
             return (BlockState)((BlockState)blockState.with(TYPE, SlabType.DOUBLE)).with(WATERLOGGED, false);
         }
-        // this.getDefaultState().with(FORCEDLIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
         FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
         BlockState blockState2 = (BlockState)((BlockState)this.getDefaultState().with(TYPE, SlabType.BOTTOM)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER)
-                .with(POWERED, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
+                .with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
         Direction direction = ctx.getSide();
         if (direction == Direction.DOWN || direction != Direction.UP && ctx.getHitPos().y - (double)blockPos.getY() > 0.5) {
             return (BlockState)blockState2.with(TYPE, SlabType.TOP);

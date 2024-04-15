@@ -69,15 +69,18 @@ public class ToggleableLtd extends Block {
     }
 
 
-/*    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
+/* @Override
+*
+*    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
+*                              BlockHitResult hit) {
+*
+*        Util.noise(state, world, pos, player, hand, hit, LIT);
+*        world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
+*
+*        return ActionResult.SUCCESS;
+*    }
+*/ // Old Code
 
-        Util.noise(state, world, pos, player, hand, hit, LIT);
-        world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
-
-        return ActionResult.SUCCESS;
-    }*/
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(LIT);

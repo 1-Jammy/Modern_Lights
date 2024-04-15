@@ -67,7 +67,7 @@ public class ToggleablePlus extends WallMountedBlock {
     // If not, then set LIT to false
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(LIT).booleanValue() && !world.isReceivingRedstonePower(pos)) {
+        if (state.get(LIT) && !world.isReceivingRedstonePower(pos)) {
             world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
         }
     }

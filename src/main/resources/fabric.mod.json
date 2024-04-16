@@ -16,9 +16,6 @@
   "entrypoints": {
     "main": [
       "com.jammy1.modernlights.modernLights"
-    ],
-    "client": [
-      "com.jammy1.modernlights.modernLightsClientMod"
     ]
   },
   "depends": {

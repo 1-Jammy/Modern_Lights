@@ -31,6 +31,8 @@ public class ToggleableLtd extends Block {
         return this.getDefaultState().with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
     }
 
+
+    // TODO: Fix Lit turning flase when lever (or any other block) placed next to it
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {

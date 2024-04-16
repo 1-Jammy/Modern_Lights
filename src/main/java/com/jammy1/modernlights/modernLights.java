@@ -25,21 +25,22 @@ public class modernLights implements ModInitializer {
     public void onInitialize() {
 
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
-                .icon(() -> new ItemStack(AllBlocks.LUMINOUS_BLOCK))
+                .icon(() -> new ItemStack(LuminousBlocks.LUMINOUS_BLOCK))
                 .displayName(Text.translatable("itemGroup.modernlights"))
                 .build());
 
         System.out.println(MOD_ID + " Registration Started");
 
-        AllBlocks.registerBlocks();
-        System.out.println(MOD_ID + " Registration Started.");
+        LuminousBlocks.registerBlocks();
+        System.out.println(MOD_ID + " LuminousBlocks Registration Complete");
         LuminousSlabs.registerBlocks();
-        System.out.println(MOD_ID + " Registration Started..");
-        MiniBlocks.registerBlocks();
-        System.out.println(MOD_ID + " Registration Started...");
-        Panels.registerBlocks();
-        System.out.println(MOD_ID + " Registration Started....");
-        Lights.registerBlocks();
+        System.out.println(MOD_ID + " LuminousSlabs Registration Complete");
+        LuminousMiniBlocks.registerBlocks();
+        System.out.println(MOD_ID + " LuminousMiniBlocks Registration Complete");
+        LuminousPanels.registerBlocks();
+        System.out.println(MOD_ID + " LuminousPanels Registration Complete");
+        LuminousLights.registerBlocks();
+        System.out.println(MOD_ID + " LuminousLights Registration Complete");
 
         System.out.println(MOD_ID + " Registration Completed!");
 

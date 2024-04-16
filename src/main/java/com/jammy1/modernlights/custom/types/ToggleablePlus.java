@@ -25,8 +25,8 @@ public class ToggleablePlus extends WallMountedBlock {
 
     protected ToggleablePlus(Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState) ((BlockState) ((BlockState) (this.stateManager.getDefaultState())
-                .with(FACING, Direction.NORTH)).with(FACE, WallMountLocation.WALL)).with(LIT, true));
+        this.setDefaultState((this.stateManager.getDefaultState())
+                .with(FACING, Direction.NORTH).with(FACE, WallMountLocation.WALL).with(LIT, true));
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ToggleablePlus extends WallMountedBlock {
                 .with(FACE, getFaceState(ctx));
     }
 
-    private WallMountLocation getFaceState(ItemPlacementContext ctx){
+    private WallMountLocation getFaceState(ItemPlacementContext ctx) {
 
         Direction dir = ctx.getSide().getOpposite();
 
@@ -47,7 +47,7 @@ public class ToggleablePlus extends WallMountedBlock {
         };
     }
 
-    private Direction getFacingState(ItemPlacementContext ctx){
+    private Direction getFacingState(ItemPlacementContext ctx) {
 
         Direction side = ctx.getSide();
 
@@ -76,7 +76,7 @@ public class ToggleablePlus extends WallMountedBlock {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
 
-        if(world.isReceivingRedstonePower(pos)){
+        if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
         Util.noise(state, world, pos, player, hand, hit, LIT);
@@ -93,15 +93,6 @@ public class ToggleablePlus extends WallMountedBlock {
             world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
         }
     }
-
-    /*@Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
-
-        Util.noise(state, world, pos, player, hand, hit, LIT);
-        Util.changeState(state, world, pos, LIT);
-        return ActionResult.SUCCESS;
-    }*/
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

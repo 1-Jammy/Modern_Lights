@@ -37,7 +37,7 @@ public class ToggleableSlab extends SlabBlock {
 
     public ToggleableSlab(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(TYPE, SlabType.BOTTOM).with(LIT,true).with(WATERLOGGED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(TYPE, SlabType.BOTTOM).with(LIT, true).with(WATERLOGGED, false));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class ToggleableSlab extends SlabBlock {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
 
-        if(world.isReceivingRedstonePower(pos)){
+        if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
 
@@ -92,14 +92,14 @@ public class ToggleableSlab extends SlabBlock {
 
         BlockState blockState = ctx.getWorld().getBlockState(blockPos);
         if (blockState.isOf(this)) {
-            return (BlockState)((BlockState)blockState.with(TYPE, SlabType.DOUBLE)).with(WATERLOGGED, false);
+            return blockState.with(TYPE, SlabType.DOUBLE).with(WATERLOGGED, false);
         }
         FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
-        BlockState blockState2 = (BlockState)((BlockState)this.getDefaultState().with(TYPE, SlabType.BOTTOM)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER)
+        BlockState blockState2 = this.getDefaultState().with(TYPE, SlabType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER)
                 .with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
         Direction direction = ctx.getSide();
-        if (direction == Direction.DOWN || direction != Direction.UP && ctx.getHitPos().y - (double)blockPos.getY() > 0.5) {
-            return (BlockState)blockState2.with(TYPE, SlabType.TOP);
+        if (direction == Direction.DOWN || direction != Direction.UP && ctx.getHitPos().y - (double) blockPos.getY() > 0.5) {
+            return blockState2.with(TYPE, SlabType.TOP);
         }
         return blockState2;
     }

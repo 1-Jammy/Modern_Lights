@@ -30,7 +30,7 @@ public class LuminousSlabs {
     }
 
     private static FabricBlockSettings DefaultSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f,LuminousSlabBlock.LIT, 15, false);
+        return Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false);
     }
 
     // Luminous Slab

@@ -32,7 +32,7 @@ public class ToggleableLtd extends Block {
     }
 
 
-    // TODO: Fix Lit turning flase when lever (or any other block) placed next to it
+    // TODO: Fix Lit turning false when lever (or any other block) placed next to it
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {
@@ -52,7 +52,7 @@ public class ToggleableLtd extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
 
-        if(world.isReceivingRedstonePower(pos)){
+        if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
         Util.noise(state, world, pos, player, hand, hit, LIT);
@@ -69,19 +69,6 @@ public class ToggleableLtd extends Block {
             world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
         }
     }
-
-
-/* @Override
-*
-*    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-*                              BlockHitResult hit) {
-*
-*        Util.noise(state, world, pos, player, hand, hit, LIT);
-*        world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
-*
-*        return ActionResult.SUCCESS;
-*    }
-*/ // Old Code
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

@@ -17,34 +17,40 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class ToggleableLtd extends Block {
+    public static final BooleanProperty POWERED = BooleanProperty.of("powered");
+    public static final BooleanProperty CLICKED = BooleanProperty.of("clicked");
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
 
     protected ToggleableLtd(Settings settings) {
         super(settings);
         this.setDefaultState(this.getDefaultState()
+                .with(POWERED, false)
+                .with(CLICKED, true)
                 .with(LIT, true));
     }
 
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos()));
+        if (ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())) {
+            return this.getDefaultState()
+                    .with(POWERED, true)
+                    .with(CLICKED, false)
+                    .with(LIT, true);
+        } else {
+            return this.getDefaultState();
+        }
     }
 
-
-    // TODO: Fix Lit turning false when lever (or any other block) placed next to it
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {
             return;
         }
-        boolean bl = state.get(LIT);
+        boolean bl = state.get(POWERED);
         if (bl != world.isReceivingRedstonePower(pos)) { // if LIT = true && isReceivingRedstonePower = false
-            if (bl) {
-                world.scheduleBlockTick(pos, this, 1);
-            } else {
-                world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS); // Then set LIT = false
-            }
+            world.setBlockState(pos, state.cycle(POWERED));
+            world.scheduleBlockTick(pos, this, 1); // Then set LIT = false
         }
     }
 
@@ -56,23 +62,37 @@ public class ToggleableLtd extends Block {
             return ActionResult.PASS;
         }
         Util.noise(state, world, pos, player, hand, hit, LIT);
-        world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
+        world.setBlockState(pos, state.cycle(CLICKED));
+        world.scheduleBlockTick(pos, this, 1);
+
 
         return ActionResult.SUCCESS;
     }
+
 
     // check if the block is receiving redstone signal or not every tick
     // If not, then set LIT to false
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(LIT).booleanValue() && !world.isReceivingRedstonePower(pos)) {
-            world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
+
+        boolean powered = state.get(POWERED);
+        boolean lit = state.get(LIT);
+        boolean clicked = state.get(CLICKED);
+
+        if (world.isReceivingRedstonePower(pos) != powered) {
+            world.setBlockState(pos, state.cycle(POWERED));
+        }
+
+        if (lit != (clicked || powered)){
+            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
+        }
+        if (!clicked && !powered){
+            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
         }
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(LIT);
+        builder.add(POWERED, CLICKED, LIT);
     }
-
 }

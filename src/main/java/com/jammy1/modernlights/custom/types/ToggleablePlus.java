@@ -5,38 +5,69 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class ToggleablePlus extends WallMountedBlock {
 
+
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final BooleanProperty POWERED = BooleanProperty.of("powered");
+    public static final BooleanProperty CLICKED = BooleanProperty.of("clicked");
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
+
 
     protected ToggleablePlus(Settings settings) {
         super(settings);
         this.setDefaultState((this.stateManager.getDefaultState())
-                .with(FACING, Direction.NORTH).with(FACE, WallMountLocation.WALL).with(LIT, true));
+                .with(FACING, Direction.NORTH)
+                .with(FACE, WallMountLocation.WALL)
+                .with(WATERLOGGED, false)
+                .with(POWERED, false)
+                .with(CLICKED, true)
+                .with(LIT, true));
     }
 
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(LIT, ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())).with(FACING, getFacingState(ctx))
-                .with(FACE, getFaceState(ctx));
+
+        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
+        boolean bl = fluidState.getFluid() == Fluids.WATER;
+
+        BlockState blockState = this.getDefaultState()
+                .with(FACING, getFacing(ctx))
+                .with(FACE, getFace(ctx))
+                .with(WATERLOGGED, bl);
+
+        if (ctx.getWorld().isReceivingRedstonePower(ctx.getBlockPos())) {
+            return blockState
+                    .with(POWERED, true)
+                    .with(CLICKED, false)
+                    .with(LIT, true);
+        } else {
+            return blockState;
+        }
     }
 
-    private WallMountLocation getFaceState(ItemPlacementContext ctx) {
+    private WallMountLocation getFace(ItemPlacementContext ctx) {
 
         Direction dir = ctx.getSide().getOpposite();
 
@@ -47,7 +78,7 @@ public class ToggleablePlus extends WallMountedBlock {
         };
     }
 
-    private Direction getFacingState(ItemPlacementContext ctx) {
+    private Direction getFacing(ItemPlacementContext ctx) {
 
         Direction side = ctx.getSide();
 
@@ -62,13 +93,10 @@ public class ToggleablePlus extends WallMountedBlock {
         if (world.isClient) {
             return;
         }
-        boolean bl = state.get(LIT);
+        boolean bl = state.get(POWERED);
         if (bl != world.isReceivingRedstonePower(pos)) { // if LIT = true && isReceivingRedstonePower = false
-            if (bl) {
-                world.scheduleBlockTick(pos, this, 1);
-            } else {
-                world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS); // Then set LIT = false
-            }
+            world.setBlockState(pos, state.cycle(POWERED));
+            world.scheduleBlockTick(pos, this, 1); // Then set LIT = false
         }
     }
 
@@ -80,7 +108,9 @@ public class ToggleablePlus extends WallMountedBlock {
             return ActionResult.PASS;
         }
         Util.noise(state, world, pos, player, hand, hit, LIT);
-        world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
+        world.setBlockState(pos, state.cycle(CLICKED));
+        world.scheduleBlockTick(pos, this, 1);
+
 
         return ActionResult.SUCCESS;
     }
@@ -89,14 +119,47 @@ public class ToggleablePlus extends WallMountedBlock {
     // If not, then set LIT to false
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (state.get(LIT) && !world.isReceivingRedstonePower(pos)) {
-            world.setBlockState(pos, state.cycle(LIT), Block.NOTIFY_LISTENERS);
+
+        boolean powered = state.get(POWERED);
+        boolean lit = state.get(LIT);
+        boolean clicked = state.get(CLICKED);
+
+        if (world.isReceivingRedstonePower(pos) != powered) {
+            world.setBlockState(pos, state.cycle(POWERED));
+        }
+
+        if (lit != (clicked || powered)) {
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
+        }
+        if (!clicked && !powered) {
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
         }
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACE, FACING, LIT);
+    public FluidState getFluidState(BlockState state) {
+        if (state.get(WATERLOGGED)) {
+            return Fluids.WATER.getStill(false);
+        }
+        return super.getFluidState(state);
     }
 
+    @Override
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        return true;
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACE, FACING, WATERLOGGED, POWERED, CLICKED, LIT);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+    }
 }

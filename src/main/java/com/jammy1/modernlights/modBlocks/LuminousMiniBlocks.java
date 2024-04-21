@@ -3,7 +3,7 @@ package com.jammy1.modernlights.modBlocks;
 import com.jammy1.modernlights.custom.shapes.MiniBlock;
 import com.jammy1.modernlights.modernLights;
 import com.jammy1.modernlights.util.Util;
-import net.minecraft.block.AbstractBlock;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class LuminousMiniBlocks {
         }
     }
 
-    private static AbstractBlock.Settings DefaultSettings() {
+    private static FabricBlockSettings DefaultSettings() {
         return Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 11, true);
     }
 

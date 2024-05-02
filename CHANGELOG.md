@@ -1,4 +1,4 @@
->## Version [4.21.2]
+>## Version [2.4.0]
 + Renamed the following files:
   - AllBLocks --> LuminousBlocks
   - Lights --> LuminousLights
@@ -19,3 +19,6 @@
 
 
 + +Fixed ToggleablePlus block's water logging issue
+
+
++ +Added Vertical Slabs

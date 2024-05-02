@@ -19,34 +19,30 @@ public class modernLights implements ModInitializer {
     // Adds a new Inventory Tab
     public static final RegistryKey<ItemGroup> ITEM_GROUP = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier(MOD_ID, MOD_ID));
     public static final String fullInfo = "full.info"; // Provides tooltip for the block, can be changed in the lang file
-    public static final String redstoneInfo = "redstone.info";
 
     @Override
     public void onInitialize() {
 
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP, FabricItemGroup.builder()
-                .icon(() -> new ItemStack(LuminousBlocks.LUMINOUS_BLOCK))
+                .icon(() -> new ItemStack(LuminousBlocks.getLuminousBLock(LuminousColors.WHITE)))
                 .displayName(Text.translatable("itemGroup.modernlights"))
                 .build());
 
         System.out.println(MOD_ID + " Registration Started");
 
         LuminousBlocks.registerBlocks();
-        System.out.println(MOD_ID + " LuminousBlocks Registration Complete");
         LuminousSlabs.registerBlocks();
-        System.out.println(MOD_ID + " LuminousSlabs Registration Complete");
+        LuminousVerticalSlabs.registerBlocks();
         LuminousMiniBlocks.registerBlocks();
-        System.out.println(MOD_ID + " LuminousMiniBlocks Registration Complete");
         LuminousPanels.registerBlocks();
-        System.out.println(MOD_ID + " LuminousPanels Registration Complete");
         LuminousLights.registerBlocks();
-        System.out.println(MOD_ID + " LuminousLights Registration Complete");
 
         System.out.println(MOD_ID + " Registration Completed!");
 
     }
 
-    public enum LuminousColor { //All the colors for all the blocks
-        LIGHT_GRAY, GRAY, BLACK, BROWN, RED, ORANGE, YELLOW, LIME, GREEN, CYAN, LIGHT_BLUE, BLUE, PURPLE, MAGENTA, PINK
+    public enum LuminousColors { //All the colors for all the blocks
+        WHITE, LIGHT_GRAY, GRAY, BLACK, BROWN, RED, ORANGE, YELLOW, LIME, GREEN, CYAN, LIGHT_BLUE, BLUE, PURPLE, MAGENTA, PINK
     }
+
 }

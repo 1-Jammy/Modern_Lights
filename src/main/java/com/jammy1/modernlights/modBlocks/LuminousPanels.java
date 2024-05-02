@@ -12,44 +12,48 @@ import java.util.Map;
 
 public class LuminousPanels {
 
-    public static final Map<modernLights.LuminousColor, Block> PANEL_BLOCKS = new HashMap<>(); //Create all the color variants
+    // Map to store panels and panel_small of different colors
+    public static final Map<modernLights.LuminousColors, Block> PANEL_BLOCKS = new HashMap<>();
+    public static final Map<modernLights.LuminousColors, Block> SMALL_PANEL_BLOCKS = new HashMap<>();
+
+    // Default block settings
+    private static final FabricBlockSettings DEFAULT_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelBlock.LIT, 14, false);
+    private static final FabricBlockSettings DEFAULT_SMALL_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelSmallBlock.LIT, 12, false);
 
     static {
-        final Block PANEL = Panel("panel"); // Create the basic block
+        // Initialize luminous slabs for each color
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create basic luminous slab and add to map
+            String blockName = color.name().equalsIgnoreCase("white") ? "panel" : "panel_" + color.name().toLowerCase();
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "panel_" + color.name().toLowerCase(); // Dynamically build block name
-            PANEL_BLOCKS.put(color, Panel(blockName)); // Create block with respective color
+            PANEL_BLOCKS.put(color, createPanel(blockName, false));
         }
 
-        final Block PANEL_SMALL = PanelSmall("panel_small"); // Create the basic block
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create full luminous slab and add to map
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "panel_small_" + color.name().toLowerCase(); // Dynamically build block name
-            PANEL_BLOCKS.put(color, PanelSmall(blockName)); // Create block with respective color
+            String blockName = color.name().equalsIgnoreCase("white") ? "panel_small" : "panel_small_" + color.name().toLowerCase();
+
+            SMALL_PANEL_BLOCKS.put(color, createPanel(blockName, true));
         }
     }
 
-    private static FabricBlockSettings DefaultPanelSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelBlock.LIT, 15, false);
+    // Method to create panels
+    private static Block createPanel(String name, boolean isSmall) {
+        return Util.registerBlocks(name, isSmall ? new PanelSmallBlock(DEFAULT_SMALL_PANEL_SETTINGS) : new PanelBlock(DEFAULT_PANEL_SETTINGS));
     }
 
-    private static FabricBlockSettings DefaultPanelSmallSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelBlock.LIT, 11, false);
+    // Access Mini Luminous Blocks [just in case]
+    public static Block getPanelBLock(modernLights.LuminousColors color) {
+        return PANEL_BLOCKS.get(color);
     }
 
-    // Panel
-    public static Block Panel(String name) {
-        return Util.registerBlocks(name, new PanelBlock(DefaultPanelSettings()));
+    public static Block getSmallPanelBLock(modernLights.LuminousColors color) {
+        return SMALL_PANEL_BLOCKS.get(color);
     }
-
-    // Small Panel
-    public static Block PanelSmall(String name) {
-        return Util.registerBlocks(name, new PanelSmallBlock(DefaultPanelSmallSettings()));
-    }
-
 
     public static void registerBlocks() {
 
     }
 }
+

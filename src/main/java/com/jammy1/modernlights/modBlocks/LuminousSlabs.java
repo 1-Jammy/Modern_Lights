@@ -11,41 +11,47 @@ import java.util.Map;
 
 public class LuminousSlabs {
 
-    public static final Map<modernLights.LuminousColor, Block> LUMINOUS_SLABS = new HashMap<>(); //Create all the color variants
+    // Map to store luminous slabs of different colors
+    public static final Map<modernLights.LuminousColors, Block> LUMINOUS_SLABS = new HashMap<>();
+    public static final Map<modernLights.LuminousColors, Block> LUMINOUS_FULL_SLABS = new HashMap<>();
+
+    // Default block settings
+    private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false);
 
     static {
-        final Block LUMINOUS_SLAB = LuminousSlab("luminous_slab");
+        // Initialize luminous slabs for each color
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create basic luminous slab and add to map
+            String blockName = color.name().equalsIgnoreCase("white") ? "luminous_slab" : "luminous_slab_" + color.name().toLowerCase();
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "luminous_slab_" + color.name().toLowerCase(); // Dynamically build block name
-            LUMINOUS_SLABS.put(color, LuminousSlab(blockName)); // Create basic block
+            LUMINOUS_SLABS.put(color, createLuminousSlab(blockName, false));
         }
 
-        final Block LUMINOUS_SLAB_FULL = LuminousSlabFull("luminous_slab_full");
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create full luminous slab and add to map
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "luminous_slab_" + color.name().toLowerCase() + "_full"; // Dynamically build block name
-            LUMINOUS_SLABS.put(color, LuminousSlabFull(blockName)); // Create full info block
+            String blockName = color.name().equalsIgnoreCase("white") ? "luminous_slab_full" : "luminous_slab_" + color.name().toLowerCase() + "_full";
+
+            LUMINOUS_FULL_SLABS.put(color, createLuminousSlab(blockName, true));
         }
     }
 
-    private static FabricBlockSettings DefaultSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false);
+    // Method to create luminous slab block
+    private static Block createLuminousSlab(String name, boolean isFull) {
+        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new LuminousSlabBlock(DEFAULT_SETTINGS));
     }
 
-    // Luminous Slab
-    public static Block LuminousSlab(String name) {
-        return Util.registerBlocks(name,
-                new LuminousSlabBlock(DefaultSettings()));
+    // Access Mini Luminous Blocks [just in case]
+    public static Block getPanelBLock(modernLights.LuminousColors color) {
+        return LUMINOUS_SLABS.get(color);
     }
 
-    // Luminous Slab Full
-    public static Block LuminousSlabFull(String name) {
-        return Util.registerBlocks(name, modernLights.fullInfo,
-                new LuminousSlabBlock(DefaultSettings()));
+    public static Block getSmallPanelBLock(modernLights.LuminousColors color) {
+        return LUMINOUS_FULL_SLABS.get(color);
     }
 
     public static void registerBlocks() {
 
     }
 }
+

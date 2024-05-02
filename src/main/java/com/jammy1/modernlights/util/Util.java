@@ -9,7 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,7 +22,6 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -45,14 +43,12 @@ public class Util {
 
     public static Block registerBlocks(String name, String info, Block block) { //register blocks with tooltip
 
-        registerBlockItem(name, info, block); //calls the registerBlockItem function to register an item for this block
-        return Registry.register(Registries.BLOCK, new Identifier(modernLights.MOD_ID, name), block);
-    }
-
-    public static Block registerBlocks(String name, String info1, String info2, Block block) { //register blocks with two tooltip
-
-        registerBlockItem(name, info1, info2, block); //calls the registerBlockItem function to register an item for this block
-        return Registry.register(Registries.BLOCK, new Identifier(modernLights.MOD_ID, name), block);
+        if (info == null) {
+            return registerBlocks(name, block);
+        } else {
+            registerBlockItem(name, info, block); //calls the registerBlockItem function to register an item for this block
+            return Registry.register(Registries.BLOCK, new Identifier(modernLights.MOD_ID, name), block);
+        }
     }
 
     private static Item registerBlockItem(String name, Block block) {
@@ -81,24 +77,6 @@ public class Util {
         return item;
     }
 
-    //Register blocks with two tooltips
-    private static Item registerBlockItem(String name, String info1, String info2, Block block) {
-
-        Item item = Registry.register(Registries.ITEM, new Identifier(modernLights.MOD_ID, name), new BlockItem(block, new FabricItemSettings()) {
-
-            @Override //add tooltip for this item
-            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-                tooltip.add(Text.translatable(info1));
-                tooltip.add(Text.translatable(info2));
-            }
-        });
-        //adds freshly created item to the item group
-        ItemGroupEvents.modifyEntriesEvent(modernLights.ITEM_GROUP).register(entries -> entries.add(item));
-
-        return item;
-    }
-
-
     //Make the block settings for the blocks
     public static final FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque) {
 
@@ -112,10 +90,8 @@ public class Util {
         }
     }
 
-
-
     //Make the *click* sound
-    public static final void noise(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit, BooleanProperty clicked) {
+    public static void makeClickSound(BlockState state, World world, BlockPos pos, Hand hand, BooleanProperty clicked) {
 
         if (!world.isClient() && hand == Hand.MAIN_HAND) {
             float pitch = state.get(clicked) ? 1.5F : 2.0F;
@@ -124,13 +100,13 @@ public class Util {
         }
     }
 
+
     //Provide faces for FACING block state
-    public static final VoxelShape voxelShapeMaker(BlockState state, Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
+    public static VoxelShape voxelShapeMaker(Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
 
         switch (face) {
             case WALL -> {
                 return switch (dir) {
-                    case NORTH -> North;
                     case SOUTH -> South;
                     case EAST -> East;
                     case WEST -> West;
@@ -148,5 +124,4 @@ public class Util {
             }
         }
     }
-
 }

@@ -12,42 +12,43 @@ import java.util.Map;
 
 public class LuminousLights {
 
-    public static final Map<modernLights.LuminousColor, Block> CEILING_LIGHTS = new HashMap<>(); //Create all the color variants
-    public static final Map<modernLights.LuminousColor, Block> MINI_LIGHTS = new HashMap<>(); //Create all the color variants
+    // Map to store mini_lights and ceiling_lights of different colors
+    public static final Map<modernLights.LuminousColors, Block> CEILING_LIGHTS = new HashMap<>();
+    public static final Map<modernLights.LuminousColors, Block> MINI_LIGHTS = new HashMap<>();
+    private static final FabricBlockSettings DefaultCeilingLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 10, true);
+    private static final FabricBlockSettings DefaultMiniLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 8, true);
+
 
     static {
-        final Block CEILING_LIGHT = CeilingLight("ceiling_light");
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "ceiling_light_" + color.name().toLowerCase();
-            CEILING_LIGHTS.put(color, CeilingLight(blockName));
+        // Initialize blocks for each color
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create ceiling_light and add to map
+            String blockName = color.name().equalsIgnoreCase("white") ? "ceiling_light" : "ceiling_light_" + color.name().toLowerCase();
+
+            CEILING_LIGHTS.put(color, createBlock(blockName, false));
         }
 
-        //MINI LIGHTS
-        final Block MINI_LIGHT = MiniLight("mini_light");
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "mini_light_" + color.name().toLowerCase();
-            MINI_LIGHTS.put(color, MiniLight(blockName));
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create mini_light and add to map
+
+            String blockName = color.name().equalsIgnoreCase("white") ? "mini_light" : "mini_light_" + color.name().toLowerCase();
+
+            MINI_LIGHTS.put(color, createBlock(blockName, true));
         }
     }
 
-    private static FabricBlockSettings DefaultCeilingLightSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 8, true);
+    // Method to create panels
+    private static Block createBlock(String name, boolean isMiniLight) {
+        return Util.registerBlocks(name, isMiniLight ? new MiniLightBlock(DefaultMiniLightSettings) : new CeilingLightBlock(DefaultCeilingLightSettings));
     }
 
-    private static FabricBlockSettings DefaultMiniLightSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 7, true);
+    // Access Ceiling Lights and Mini Lights by color [just in case]
+    public static Block getCeilingLightBLock(modernLights.LuminousColors color) {
+        return CEILING_LIGHTS.get(color);
     }
 
-    // Ceiling Light
-    public static Block CeilingLight(String name) {
-        return Util.registerBlocks(name,
-                new CeilingLightBlock(DefaultCeilingLightSettings()));
-    }
-
-    // Mini Light
-    public static Block MiniLight(String name) {
-        return Util.registerBlocks(name,
-                new MiniLightBlock(DefaultMiniLightSettings()));
+    public static Block getMiniLightBLock(modernLights.LuminousColors color) {
+        return MINI_LIGHTS.get(color);
     }
 
     public static void registerBlocks() {

@@ -10,36 +10,43 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LuminousMiniBlocks {
-    public static final Map<modernLights.LuminousColor, Block> MINI_LUMINOUS_BLOCKS = new HashMap<>(); //Create all the color variants
+    // Map to store mini_blocks of different colors
+    public static final Map<modernLights.LuminousColors, Block> MINI_BLOCKS = new HashMap<>();
+    public static final Map<modernLights.LuminousColors, Block> MINI_FULL_BLOCKS = new HashMap<>();
+
+    // Default block settings
+    private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 12, true);
 
     static {
-        final Block MINI_LUMINOUS_BLOCK = MiniBlock("mini_luminous_block");
+        // Initialize luminous slabs for each color
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create basic luminous slab and add to map
+            String blockName = color.name().equalsIgnoreCase("white") ? "mini_luminous_block" : "mini_luminous_block_" + color.name().toLowerCase();
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "mini_luminous_block_" + color.name().toLowerCase(); // Dynamically build block name
-            MINI_LUMINOUS_BLOCKS.put(color, MiniBlock(blockName)); // Create basic block
+            MINI_BLOCKS.put(color, createMiniBlock(blockName, false));
         }
 
-        final Block MINI_LUMINOUS_BLOCK_FULL = MiniBlockFull("mini_luminous_block_full");
+        for (modernLights.LuminousColors color : modernLights.LuminousColors.values()) {
+            // Create full luminous slab and add to map
 
-        for (modernLights.LuminousColor color : modernLights.LuminousColor.values()) {
-            String blockName = "mini_luminous_block_" + color.name().toLowerCase() + "_full";
-            MINI_LUMINOUS_BLOCKS.put(color, MiniBlockFull(blockName));
+            String blockName = color.name().equalsIgnoreCase("white") ? "mini_luminous_block_full" : "mini_luminous_block_" + color.name().toLowerCase() + "_full";
+
+            MINI_FULL_BLOCKS.put(color, createMiniBlock(blockName, true));
         }
     }
 
-    private static FabricBlockSettings DefaultSettings() {
-        return Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 11, true);
+    // Method to create mini_blocks
+    private static Block createMiniBlock(String name, boolean isFull) {
+        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new MiniBlock(DEFAULT_SETTINGS));
     }
 
-    // Mini Block
-    public static Block MiniBlock(String name) {
-        return Util.registerBlocks(name, new MiniBlock(DefaultSettings()));
+    // Access Mini Luminous Blocks [just in case]
+    public static Block getMiniBLock(modernLights.LuminousColors color) {
+        return MINI_BLOCKS.get(color);
     }
 
-    // Mini Block Full
-    public static Block MiniBlockFull(String name) {
-        return Util.registerBlocks(name, modernLights.fullInfo, new MiniBlock(DefaultSettings()));
+    public static Block getMinifullBLock(modernLights.LuminousColors color) {
+        return MINI_FULL_BLOCKS.get(color);
     }
 
     public static void registerBlocks() {

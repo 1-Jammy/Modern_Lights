@@ -9,5 +9,4 @@ public class LuminousSlabBlock extends ToggleableSlab {
     }
 
 
-
 }

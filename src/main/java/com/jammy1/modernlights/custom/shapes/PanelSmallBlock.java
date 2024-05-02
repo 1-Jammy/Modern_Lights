@@ -17,18 +17,20 @@ public class PanelSmallBlock extends ToggleablePlus {
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
         Direction dir = state.get(FACING);
         WallMountLocation face = state.get(FACE);
 
-        return Util.voxelShapeMaker(state, dir, face,
+        return Util.voxelShapeMaker(dir, face,
                 VoxelShapes.cuboid(0.1875, 0.1875, 0.9375, 0.8125, 0.8125, 1),
                 VoxelShapes.cuboid(0.1875, 0.1875, 0, 0.8125, 0.8125, 0.0625),
                 VoxelShapes.cuboid(0, 0.1875, 0.1875, 0.0625, 0.8125, 0.8125),
                 VoxelShapes.cuboid(0.9375, 0.1875, 0.1875, 1, 0.8125, 0.8125),
                 VoxelShapes.cuboid(0.1875, 0.9375, 0.1875, 0.8125, 1, 0.8125),
-                VoxelShapes.cuboid(0.1875, 0, 0.1875, 0.8125, 0.0625, 0.8125));
+                VoxelShapes.cuboid(0.1875, 0, 0.1875, 0.8125, 0.0625, 0.8125)
+        );
     }
 
 }

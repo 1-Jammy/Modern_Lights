@@ -17,12 +17,13 @@ public class CeilingLightBlock extends ToggleablePlus {
         super(settings);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext ctx) {
         Direction dir = state.get(FACING);
         WallMountLocation face = state.get(FACE);
 
-        return Util.voxelShapeMaker(state, dir, face,
+        return Util.voxelShapeMaker(dir, face,
                 VoxelShapes.cuboid(0.3125, 0.3125, 0.9375, 0.6875, 0.6875, 1),
                 VoxelShapes.cuboid(0.3125, 0.3125, 0, 0.6875, 0.6875, 0.0625),
                 VoxelShapes.cuboid(0, 0.3125, 0.3125, 0.0625, 0.6875, 0.6875),

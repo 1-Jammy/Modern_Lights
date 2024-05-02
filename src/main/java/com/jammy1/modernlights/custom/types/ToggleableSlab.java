@@ -47,6 +47,7 @@ public class ToggleableSlab extends SlabBlock {
                 .with(LIT, true));
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {
@@ -59,6 +60,7 @@ public class ToggleableSlab extends SlabBlock {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
@@ -66,7 +68,7 @@ public class ToggleableSlab extends SlabBlock {
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.noise(state, world, pos, player, hand, hit, LIT);
+        Util.makeClickSound(state, world, pos, hand, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 
@@ -77,6 +79,7 @@ public class ToggleableSlab extends SlabBlock {
 
     // check if the block is receiving redstone signal or not every tick
     // If not, then set LIT to false
+    @SuppressWarnings("deprecation")
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
@@ -84,16 +87,21 @@ public class ToggleableSlab extends SlabBlock {
         boolean clicked = state.get(CLICKED);
         boolean lit = state.get(LIT);
 
-        if (world.isReceivingRedstonePower(pos) != powered) {
+        if (world.isReceivingRedstonePower(pos) != powered)
             world.setBlockState(pos, state.cycle(POWERED));
-        }
 
-        if (lit != (clicked || powered)){
-            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
-        }
-        if (!clicked && !powered){
-            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
-        }
+
+        if (powered && clicked)
+            world.setBlockState(pos, state.with(CLICKED, false));
+
+
+        if (lit != (clicked || powered))
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
+
+
+        if (!clicked && !powered)
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
+
     }
 
     @Override // Letting Minecraft know that there are FOUR properties in this block
@@ -116,7 +124,7 @@ public class ToggleableSlab extends SlabBlock {
         }
     }
 
-    private BlockState getBaseState(ItemPlacementContext ctx){
+    private BlockState getBaseState(ItemPlacementContext ctx) {
         BlockPos blockPos = ctx.getBlockPos();
 
         BlockState blockState = ctx.getWorld().getBlockState(blockPos);
@@ -128,7 +136,7 @@ public class ToggleableSlab extends SlabBlock {
         BlockState blockState2 = this.getDefaultState().with(TYPE, SlabType.BOTTOM).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
         Direction direction = ctx.getSide();
         if (direction == Direction.DOWN || direction != Direction.UP && ctx.getHitPos().y - (double) blockPos.getY() > 0.5) {
-            return  blockState2.with(TYPE, SlabType.TOP);
+            return blockState2.with(TYPE, SlabType.TOP);
         }
         return blockState2;
     }

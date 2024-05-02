@@ -4,8 +4,8 @@ import com.jammy1.modernlights.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallMountedBlock;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.block.enums.WallMountLocation;
-import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -20,12 +20,11 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class ToggleablePlus extends WallMountedBlock {
+public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -88,6 +87,7 @@ public class ToggleablePlus extends WallMountedBlock {
         };
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {
@@ -100,6 +100,7 @@ public class ToggleablePlus extends WallMountedBlock {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
@@ -107,7 +108,7 @@ public class ToggleablePlus extends WallMountedBlock {
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.noise(state, world, pos, player, hand, hit, LIT);
+        Util.makeClickSound(state, world, pos, hand, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 
@@ -117,6 +118,7 @@ public class ToggleablePlus extends WallMountedBlock {
 
     // check if the block is receiving redstone signal or not every tick
     // If not, then set LIT to false
+    @SuppressWarnings("deprecation")
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 
@@ -128,6 +130,10 @@ public class ToggleablePlus extends WallMountedBlock {
             world.setBlockState(pos, state.cycle(POWERED));
         }
 
+        if (powered && clicked) {
+            world.setBlockState(pos, state.with(CLICKED, false));
+        }
+
         if (lit != (clicked || powered)) {
             world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
         }
@@ -136,17 +142,13 @@ public class ToggleablePlus extends WallMountedBlock {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
         if (state.get(WATERLOGGED)) {
             return Fluids.WATER.getStill(false);
         }
         return super.getFluidState(state);
-    }
-
-    @Override
-    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
-        return true;
     }
 
     @Override

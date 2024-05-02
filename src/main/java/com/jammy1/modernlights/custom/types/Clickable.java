@@ -25,7 +25,7 @@ public class Clickable extends Block {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
 
-        Util.noise(state, world, pos, player, hand, hit, CLICKED);
+        Util.makeClickSound(state, world, pos, hand, CLICKED);
         return ActionResult.SUCCESS;
     }
 

@@ -42,6 +42,7 @@ public class ToggleableLtd extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (world.isClient) {
@@ -54,6 +55,7 @@ public class ToggleableLtd extends Block {
         }
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
                               BlockHitResult hit) {
@@ -61,7 +63,7 @@ public class ToggleableLtd extends Block {
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.noise(state, world, pos, player, hand, hit, LIT);
+        Util.makeClickSound(state, world, pos, hand, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 
@@ -83,11 +85,16 @@ public class ToggleableLtd extends Block {
             world.setBlockState(pos, state.cycle(POWERED));
         }
 
-        if (lit != (clicked || powered)){
-            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
+        if (powered && clicked) {
+            world.setBlockState(pos, state.with(CLICKED, false));
         }
-        if (!clicked && !powered){
-            world.setBlockState(pos,state.cycle(LIT), NOTIFY_LISTENERS);
+
+        if (lit != (clicked || powered)) {
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
+        }
+
+        if (!clicked && !powered) {
+            world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
         }
     }
 

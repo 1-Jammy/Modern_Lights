@@ -22,7 +22,7 @@
   "rewards": {
     "recipes": [
       "modernlights:crafting/slabs/luminous_slab_full",
-      "modernlights:conversions/blocks/luminous_block",
+      "modernlights:conversions/blocks/luminous_block_full",
       "modernlights:crafting/vertical_slabs/luminous_vertical_slab_full",
       "modernlights:stonecutter/mini_blocks/mini_luminous_block_full",
       "modernlights:stonecutter/slabs/luminous_slab_full",

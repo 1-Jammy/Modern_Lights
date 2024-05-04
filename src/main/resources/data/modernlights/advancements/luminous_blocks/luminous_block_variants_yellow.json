@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "modernlights:luminous_block_yellow_full"
+              "modernlights:luminous_block_yellow"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   "rewards": {
     "recipes": [
       "modernlights:crafting/slabs/luminous_slab_yellow",
-      "modernlights:conversions/blocks/luminous_block_yellow_full",
+      "modernlights:conversions/blocks/luminous_block_yellow",
       "modernlights:crafting/vertical_slabs/luminous_vertical_slab_yellow",
       "modernlights:stonecutter/mini_blocks/mini_luminous_block_yellow",
       "modernlights:stonecutter/panel/panel_yellow",

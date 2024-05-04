@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "modernlights:panel_brown"
-  },
-  "result": "modernlights:ceiling_light_brown",
-  "count": 16
-}

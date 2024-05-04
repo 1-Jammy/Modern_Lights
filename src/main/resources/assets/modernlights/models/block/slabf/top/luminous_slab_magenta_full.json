@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "modernlights:block/full/on/luminous_block_magenta_full",
-    "top": "modernlights:block/full/on/luminous_block_magenta_full",
-    "side": "modernlights:block/slabf/on/luminous_slab_magenta_full"
-  }
-}

@@ -1,4 +1,7 @@
 {
+	"textures": {
+		"particle": "#0"
+	},
   "elements": [
     {
       "from": [0, 0, 0],

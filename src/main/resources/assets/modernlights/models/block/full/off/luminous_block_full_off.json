@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "ambientocclusion": true,
-  "textures": {
-    "all": "modernlights:block/full/off/luminous_block_full_off"
-  }
-}

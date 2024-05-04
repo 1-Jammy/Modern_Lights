@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "modernlights:panel_small_black"
+    }
+  ],
+  "result": {
+    "item": "modernlights:panel_black",
+    "count": 1
+  },
+  "group": "panel_small_conv"
+}

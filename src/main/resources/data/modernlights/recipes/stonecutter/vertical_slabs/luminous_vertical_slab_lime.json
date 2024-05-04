@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_block_lime"
+  },
+  "result": "modernlights:luminous_vertical_slab_lime",
+  "count": 2
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_block"
+  },
+  "result": "modernlights:mini_luminous_block",
+  "count": 16
+}

@@ -1,0 +1,31 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_cyan",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_cyan"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_cyan",
+      "modernlights:stonecutter/mini_lights/mini_light_cyan",
+      "modernlights:conversions/panels/panel_small_cyan",
+      "modernlights:conversions/panels/panel_cyan"
+    ]
+  },
+  "sends_telemetry_event": true
+}

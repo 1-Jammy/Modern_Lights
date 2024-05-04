@@ -1,0 +1,27 @@
+{
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:polished_andesite"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:andesite_frame"
+    ]
+  },
+  "sends_telemetry_event": true
+}

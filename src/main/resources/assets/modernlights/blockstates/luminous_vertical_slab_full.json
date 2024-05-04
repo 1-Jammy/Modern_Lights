@@ -1,0 +1,45 @@
+{
+  "variants": {
+    "type=single,lit=true,facing=north": {
+      "model": "modernlights:block/vertical_slabs/on/luminous_vertical_slab_full",
+      "y": 0
+    },
+    "type=single,lit=true,facing=south": {
+      "model": "modernlights:block/vertical_slabs/on/luminous_vertical_slab_full",
+      "y": 180
+    },
+    "type=single,lit=true,facing=east": {
+      "model": "modernlights:block/vertical_slabs/on/luminous_vertical_slab_full",
+      "y": 90
+    },
+    "type=single,lit=true,facing=west": {
+      "model": "modernlights:block/vertical_slabs/on/luminous_vertical_slab_full",
+      "y": 270
+    },
+
+    "type=single,lit=false,facing=north": {
+      "model": "modernlights:block/vertical_slabs/off/luminous_vertical_slab_full",
+      "y": 0
+    },
+    "type=single,lit=false,facing=south": {
+      "model": "modernlights:block/vertical_slabs/off/luminous_vertical_slab_full",
+      "y": 180
+    },
+    "type=single,lit=false,facing=east": {
+      "model": "modernlights:block/vertical_slabs/off/luminous_vertical_slab_full",
+      "y": 90
+    },
+    "type=single,lit=false,facing=west": {
+      "model": "modernlights:block/vertical_slabs/off/luminous_vertical_slab_full",
+      "y": 270
+    },
+
+
+    "type=double,lit=true": {
+      "model": "modernlights:block/blocks/on/luminous_block_full"
+    },
+    "type=double,lit=false": {
+      "model": "modernlights:block/blocks/off/luminous_block_full"
+    }
+  }
+}

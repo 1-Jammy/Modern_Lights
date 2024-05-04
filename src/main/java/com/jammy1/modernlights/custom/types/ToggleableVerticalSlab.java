@@ -146,8 +146,8 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
         BlockPos blockPos = ctx.getBlockPos();
         BlockState blockState = ctx.getWorld().getBlockState(blockPos);
 
-        if (blockState.isOf(this)){
-            return blockState.with(TYPE, VerticalSlabType.DOUBLE);
+        if (blockState.isOf(this)) {
+            return blockState.with(TYPE, VerticalSlabType.DOUBLE).with(WATERLOGGED, false);
         }
 
         FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
@@ -191,10 +191,8 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
             return false;
         }
         if (context.canReplaceExisting()) {
-            boolean bl = context.getHitPos().x - (double) context.getBlockPos().getX() > 0.5;
-            boolean bl2 = context.getHitPos().z - (double) context.getBlockPos().getZ() > 0.5;
+
             Direction direction = context.getSide();
-            Direction playerDir = context.getHorizontalPlayerFacing();
             Direction facing = state.get(FACING);
             return direction.getOpposite() == facing;
 
@@ -202,9 +200,10 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED).booleanValue()) {
+        if (state.get(WATERLOGGED)) {
             return Fluids.WATER.getStill(false);
         }
         return super.getFluidState(state);
@@ -226,6 +225,7 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
         return false;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(WATERLOGGED)) {
@@ -234,6 +234,7 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
         return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         switch (type) {

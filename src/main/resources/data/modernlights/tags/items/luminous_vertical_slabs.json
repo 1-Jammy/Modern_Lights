@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:luminous_vertical_slab",
+    "modernlights:luminous_vertical_slab_light_gray",
+    "modernlights:luminous_vertical_slab_gray",
+    "modernlights:luminous_vertical_slab_black",
+    "modernlights:luminous_vertical_slab_brown",
+    "modernlights:luminous_vertical_slab_red",
+    "modernlights:luminous_vertical_slab_orange",
+    "modernlights:luminous_vertical_slab_yellow",
+    "modernlights:luminous_vertical_slab_lime",
+    "modernlights:luminous_vertical_slab_green",
+    "modernlights:luminous_vertical_slab_cyan",
+    "modernlights:luminous_vertical_slab_light_blue",
+    "modernlights:luminous_vertical_slab_blue",
+    "modernlights:luminous_vertical_slab_purple",
+    "modernlights:luminous_vertical_slab_magenta",
+    "modernlights:luminous_vertical_slab_pink"
+  ]
+}

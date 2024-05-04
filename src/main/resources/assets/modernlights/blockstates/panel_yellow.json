@@ -27,30 +27,30 @@
       "model": "modernlights:block/panel/on/panel_yellow"
     },
     "face=wall,facing=north,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off",
+      "model": "modernlights:block/panel/off/panel",
       "x": 90
     },
     "face=wall,facing=south,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off",
+      "model": "modernlights:block/panel/off/panel",
       "x": 90,
       "y": 180
     },
     "face=wall,facing=east,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off",
+      "model": "modernlights:block/panel/off/panel",
       "x": 90,
       "y": 90
     },
     "face=wall,facing=west,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off",
+      "model": "modernlights:block/panel/off/panel",
       "x": 90,
       "y": 270
     },
     "face=ceiling,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off",
+      "model": "modernlights:block/panel/off/panel",
       "x": 180
     },
     "face=floor,lit=false": {
-      "model": "modernlights:block/panel/off/panel_off"
+      "model": "modernlights:block/panel/off/panel"
     }
   }
 }

@@ -12,8 +12,6 @@ import java.util.Map;
 
 public class LuminousVerticalSlabs {
 
-    //TODO: Add recipe, for all the vertical slab blocks
-    //TODO : DELETE .bak files
 
     // Map to store vertical slabs of different colors
     public static final Map<modernLights.LuminousColors, Block> LUMINOUS_VERTICAL_SLABS = new HashMap<>();

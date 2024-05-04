@@ -1,10 +1,7 @@
 package com.jammy1.modernlights.custom.types;
 
 import com.jammy1.modernlights.util.Util;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.WallMountedBlock;
-import net.minecraft.block.Waterloggable;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -13,6 +10,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -28,8 +26,10 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty POWERED = BooleanProperty.of("powered");
     public static final BooleanProperty CLICKED = BooleanProperty.of("clicked");
+
     public static final BooleanProperty LIT = BooleanProperty.of("lit");
 
 
@@ -142,6 +142,7 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
         }
     }
 
+
     @SuppressWarnings("deprecation")
     @Override
     public FluidState getFluidState(BlockState state) {
@@ -158,6 +159,7 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+
         if (state.get(WATERLOGGED)) {
             world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }

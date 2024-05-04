@@ -13,7 +13,7 @@ public class LuminousSlabs {
 
     // Map to store luminous slabs of different colors
     public static final Map<modernLights.LuminousColors, Block> LUMINOUS_SLABS = new HashMap<>();
-    public static final Map<modernLights.LuminousColors, Block> LUMINOUS_FULL_SLABS = new HashMap<>();
+    public static final Map<modernLights.LuminousColors, Block> LUMINOUS_SLABS_FULL = new HashMap<>();
 
     // Default block settings
     private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false);
@@ -32,7 +32,7 @@ public class LuminousSlabs {
 
             String blockName = color.name().equalsIgnoreCase("white") ? "luminous_slab_full" : "luminous_slab_" + color.name().toLowerCase() + "_full";
 
-            LUMINOUS_FULL_SLABS.put(color, createLuminousSlab(blockName, true));
+            LUMINOUS_SLABS_FULL.put(color, createLuminousSlab(blockName, true));
         }
     }
 
@@ -42,12 +42,12 @@ public class LuminousSlabs {
     }
 
     // Access Mini Luminous Blocks [just in case]
-    public static Block getPanelBLock(modernLights.LuminousColors color) {
+    public static Block getLuminousSlab(modernLights.LuminousColors color) {
         return LUMINOUS_SLABS.get(color);
     }
 
-    public static Block getSmallPanelBLock(modernLights.LuminousColors color) {
-        return LUMINOUS_FULL_SLABS.get(color);
+    public static Block getLuminousSlabFull(modernLights.LuminousColors color) {
+        return LUMINOUS_SLABS_FULL.get(color);
     }
 
     public static void registerBlocks() {

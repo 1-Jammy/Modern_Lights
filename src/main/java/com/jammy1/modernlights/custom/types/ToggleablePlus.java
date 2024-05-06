@@ -20,6 +20,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
@@ -137,9 +138,23 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
         if (lit != (clicked || powered)) {
             world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
         }
+
         if (!clicked && !powered) {
             world.setBlockState(pos, state.cycle(LIT), NOTIFY_LISTENERS);
         }
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        Direction direction = ToggleablePlus.attachedDirection(state).getOpposite();
+        return Block.sideCoversSmallSquare(world, pos.offset(direction), direction.getOpposite());
+    }
+
+    protected static Direction attachedDirection(BlockState state) {
+        if (state.get(FACE)==WallMountLocation.WALL){
+            return state.get(FACING);
+        }
+        return state.get(FACE) == WallMountLocation.FLOOR ? Direction.UP : Direction.DOWN;
     }
 
 

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "modernlights",
+  "version": "${version}",
+
+  "name": "Modern Lights",
+  "description": "Adds simple and modern looking light blocks to Minecraft",
+  "authors": [
+    "1_Jammy"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/modern-lights-mod"
+  },
+
+  "license": "CC BY-NC-SA 4.0",
+  "icon": "assets/modernlights/icon.png",
+  
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.jammy1.modernlights.modernLights"
+    ],
+    "client": [
+      "com.jammy1.modernlights.modernLightsClientMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

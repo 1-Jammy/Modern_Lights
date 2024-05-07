@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:panel",
+    "modernlights:panel_light_gray",
+    "modernlights:panel_gray",
+    "modernlights:panel_black",
+    "modernlights:panel_brown",
+    "modernlights:panel_red",
+    "modernlights:panel_orange",
+    "modernlights:panel_yellow",
+    "modernlights:panel_lime",
+    "modernlights:panel_green",
+    "modernlights:panel_cyan",
+    "modernlights:panel_light_blue",
+    "modernlights:panel_blue",
+    "modernlights:panel_purple",
+    "modernlights:panel_magenta",
+    "modernlights:panel_pink"
+  ]
+}

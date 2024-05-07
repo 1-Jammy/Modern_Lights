@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_slab_gray"
+  },
+  "result": "modernlights:panel_gray",
+  "count": 8
+}

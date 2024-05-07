@@ -1,0 +1,22 @@
+{
+    "variants": {
+        "type=bottom,lit=true": {
+            "model": "modernlights:block/slabs/bottom/luminous_slab_green"
+        },
+        "type=double,lit=true": {
+            "model": "modernlights:block/blocks/on/luminous_block_green"
+        },
+        "type=top,lit=true": {
+            "model": "modernlights:block/slabs/top/luminous_slab_green"
+        },
+        "type=bottom,lit=false": {
+            "model": "modernlights:block/slabs/off/luminous_slab"
+        },
+        "type=double,lit=false": {
+            "model": "modernlights:block/blocks/off/luminous_block"
+        },
+        "type=top,lit=false": {
+            "model": "modernlights:block/slabs/off/luminous_slab_top"
+        }
+    }
+}

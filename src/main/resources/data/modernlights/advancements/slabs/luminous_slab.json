@@ -1,0 +1,29 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:luminous_slab"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/slabs/luminous_slab",
+      "modernlights:conversions/slabs/luminous_slab_full",
+      "modernlights:stonecutter/panel/from_slab/panel"
+    ]
+  }
+}

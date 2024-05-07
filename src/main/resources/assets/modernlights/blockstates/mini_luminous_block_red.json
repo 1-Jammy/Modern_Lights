@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "face=wall,facing=north,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red",
+      "x": 90
+    },
+    "face=wall,facing=south,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=east,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=west,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red",
+      "x": 180
+    },
+    "face=floor,lit=true": {
+      "model": "modernlights:block/mini_blocks/on/mini_luminous_block_red"
+    },
+    "face=wall,facing=north,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block",
+      "x": 90
+    },
+    "face=wall,facing=south,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=east,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=west,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block",
+      "x": 180
+    },
+    "face=floor,lit=false": {
+      "model": "modernlights:block/mini_blocks/off/mini_luminous_block"
+    }
+  }
+}

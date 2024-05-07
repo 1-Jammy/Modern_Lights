@@ -1,0 +1,8 @@
+{
+  "parent": "modernlights:template/template_panel_small",
+  "textures": {
+    "all": "modernlights:block/panel_small/off/panel_small",
+    "back": "modernlights:block/panel_small/off/panel_small_back",
+    "particle": "modernlights:block/panel_small/off/panel_small"
+  }
+}

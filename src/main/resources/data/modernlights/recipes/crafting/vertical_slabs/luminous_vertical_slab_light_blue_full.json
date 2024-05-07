@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#","#","#"
+  ],
+  "key": {
+    "#": {
+      "item": "modernlights:luminous_block_light_blue_full"
+    }
+  },
+  "result": {
+    "item": "modernlights:luminous_vertical_slab_light_blue_full",
+    "count": 6
+  },
+  "group": "luminous_vertical_slab_full_craft"
+}

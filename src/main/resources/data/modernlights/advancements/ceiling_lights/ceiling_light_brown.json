@@ -1,0 +1,28 @@
+{
+  "parent": "modernlights:panels/panel_brown",
+  "criteria": {
+    "has_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:ceiling_light_brown"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/ceiling_light_brown",
+      "modernlights:conversions/mini_light_brown"
+    ]
+  }
+}

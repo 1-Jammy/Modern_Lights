@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:panel_lime"
+  },
+  "result": "modernlights:ceiling_light_lime",
+  "count": 16
+}

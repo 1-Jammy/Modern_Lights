@@ -1,0 +1,30 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_black",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_black"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_black",
+      "modernlights:stonecutter/mini_lights/mini_light_black",
+      "modernlights:conversions/panels/panel_small_black",
+      "modernlights:conversions/panels/panel_black"
+    ]
+  }
+}

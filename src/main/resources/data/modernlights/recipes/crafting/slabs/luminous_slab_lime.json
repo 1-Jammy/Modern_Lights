@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "modernlights:luminous_block_lime"
+    }
+  },
+  "result": {
+    "item": "modernlights:luminous_slab_lime",
+    "count": 6
+  },
+  "group": "luminous_slab"
+}

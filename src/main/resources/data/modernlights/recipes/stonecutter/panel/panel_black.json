@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_block_black"
+  },
+  "result": "modernlights:panel_black",
+  "count": 16
+}

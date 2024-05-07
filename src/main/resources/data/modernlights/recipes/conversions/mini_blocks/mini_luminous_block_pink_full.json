@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "modernlights:mini_luminous_block_pink_full"
+    }
+  ],
+  "result": {
+    "item": "modernlights:mini_luminous_block_pink",
+    "count": 1
+  },
+  "group": "mini_luminous_block_full_conv"
+}

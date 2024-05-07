@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_slab_magenta"
+  },
+  "result": "modernlights:panel_magenta",
+  "count": 8
+}

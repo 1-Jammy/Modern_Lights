@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "modernlights:ceiling_light_pink"
+    }
+  ],
+  "result": {
+    "item": "modernlights:mini_light_pink",
+    "count": 1
+  },
+  "group": "ceiling_light_conv"
+}

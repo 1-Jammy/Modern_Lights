@@ -1,0 +1,29 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_brown",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:luminous_slab_brown"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/slabs/luminous_slab_brown",
+      "modernlights:conversions/slabs/luminous_slab_brown_full",
+      "modernlights:stonecutter/panel/from_slab/panel_brown"
+    ]
+  }
+}

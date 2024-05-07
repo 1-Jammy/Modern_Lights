@@ -1,0 +1,28 @@
+{
+  "parent": "modernlights:panels/panel_green",
+  "criteria": {
+    "has_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:ceiling_light_green"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/ceiling_light_green",
+      "modernlights:conversions/mini_light_green"
+    ]
+  }
+}

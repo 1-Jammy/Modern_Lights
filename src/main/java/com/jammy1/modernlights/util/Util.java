@@ -78,15 +78,14 @@ public class Util {
     }
 
     //Make the block settings for the blocks
-    public static final FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque) {
+    public static FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque) {
 
-        FabricBlockSettings settings = FabricBlockSettings.create().pistonBehavior(PistonBehavior.NORMAL).sounds(BlockSoundGroup.METAL).strength(hardness, resistance);
+        FabricBlockSettings settings = FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(hardness, resistance);
 
         if (isNonOpaque) {
-            return settings = settings.luminance((state) -> state.get(property) ? lit : 0).nonOpaque();
+            return settings.luminance((state) -> state.get(property) ? lit : 0).pistonBehavior(PistonBehavior.DESTROY).nonOpaque();
         } else {
-            return settings = settings.luminance((state) -> state.get(property) ? lit : 0);
-
+            return settings.luminance((state) -> state.get(property) ? lit : 0).pistonBehavior(PistonBehavior.NORMAL);
         }
     }
 

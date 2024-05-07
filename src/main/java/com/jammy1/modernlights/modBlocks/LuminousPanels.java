@@ -17,8 +17,8 @@ public class LuminousPanels {
     public static final Map<modernLights.LuminousColors, Block> SMALL_PANEL_BLOCKS = new HashMap<>();
 
     // Default block settings
-    private static final FabricBlockSettings DEFAULT_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelBlock.LIT, 14, false);
-    private static final FabricBlockSettings DEFAULT_SMALL_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelSmallBlock.LIT, 12, false);
+    private static final FabricBlockSettings DEFAULT_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelBlock.LIT, 14, true);
+    private static final FabricBlockSettings DEFAULT_SMALL_PANEL_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, PanelSmallBlock.LIT, 12, true);
 
     static {
         // Initialize luminous slabs for each color

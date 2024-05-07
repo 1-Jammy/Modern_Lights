@@ -45,7 +45,7 @@ public class LuminousMiniBlocks {
         return MINI_BLOCKS.get(color);
     }
 
-    public static Block getMiniBLockfull(modernLights.LuminousColors color) {
+    public static Block getMiniBlockFull(modernLights.LuminousColors color) {
         return MINI_FULL_BLOCKS.get(color);
     }
 

@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_brown",
       "modernlights:conversions/mini_light_brown"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_purple",
       "modernlights:conversions/mini_light_purple"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

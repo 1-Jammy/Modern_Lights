@@ -25,6 +25,5 @@
       "modernlights:conversions/slabs/luminous_slab_orange_full",
       "modernlights:stonecutter/panel/from_slab/panel_orange"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

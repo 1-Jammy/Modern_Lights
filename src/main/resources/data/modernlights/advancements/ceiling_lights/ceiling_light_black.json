@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_black",
       "modernlights:conversions/mini_light_black"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_cyan",
       "modernlights:conversions/mini_light_cyan"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

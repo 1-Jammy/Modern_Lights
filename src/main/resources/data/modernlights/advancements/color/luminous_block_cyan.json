@@ -24,6 +24,5 @@
       "modernlights:crafting/blocks/luminous_block_cyan",
       "modernlights:crafting/blocks/luminous_block_cyan_full"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

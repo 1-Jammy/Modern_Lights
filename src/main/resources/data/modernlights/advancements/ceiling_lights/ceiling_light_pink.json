@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_pink",
       "modernlights:conversions/mini_light_pink"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

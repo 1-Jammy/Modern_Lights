@@ -24,6 +24,5 @@
       "modernlights:crafting/blocks/luminous_block_lime",
       "modernlights:crafting/blocks/luminous_block_lime_full"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

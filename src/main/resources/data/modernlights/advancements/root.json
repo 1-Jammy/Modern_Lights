@@ -22,6 +22,5 @@
     "recipes": [
       "modernlights:andesite_frame"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

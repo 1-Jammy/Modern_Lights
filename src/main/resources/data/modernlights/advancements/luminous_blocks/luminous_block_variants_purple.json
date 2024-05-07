@@ -29,6 +29,5 @@
       "modernlights:stonecutter/slabs/luminous_slab_purple",
       "modernlights:stonecutter/vertical_slabs/luminous_vertical_slab_purple"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

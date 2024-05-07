@@ -26,6 +26,5 @@
       "modernlights:conversions/panels/panel_small_yellow",
       "modernlights:conversions/panels/panel_yellow"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

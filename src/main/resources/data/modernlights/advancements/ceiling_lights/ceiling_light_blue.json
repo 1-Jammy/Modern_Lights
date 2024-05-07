@@ -24,6 +24,5 @@
       "modernlights:conversions/ceiling_light_blue",
       "modernlights:conversions/mini_light_blue"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

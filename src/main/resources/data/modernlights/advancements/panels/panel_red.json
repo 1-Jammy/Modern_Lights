@@ -26,6 +26,5 @@
       "modernlights:conversions/panels/panel_small_red",
       "modernlights:conversions/panels/panel_red"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

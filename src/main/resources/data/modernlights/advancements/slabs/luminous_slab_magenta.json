@@ -25,6 +25,5 @@
       "modernlights:conversions/slabs/luminous_slab_magenta_full",
       "modernlights:stonecutter/panel/from_slab/panel_magenta"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

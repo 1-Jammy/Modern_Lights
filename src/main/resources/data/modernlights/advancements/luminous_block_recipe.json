@@ -23,6 +23,5 @@
     "recipes": [
       "modernlights:luminous_block"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

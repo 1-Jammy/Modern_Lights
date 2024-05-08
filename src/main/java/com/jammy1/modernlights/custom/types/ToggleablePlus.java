@@ -60,28 +60,21 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
         Direction dir = ctx.getSide().getOpposite();
 
-        switch (dir) {
-            case UP:
-                return WallMountLocation.CEILING;
-            case DOWN:
-                return WallMountLocation.FLOOR;
-            default:
-                return WallMountLocation.WALL;
-        }
+        return switch (dir) {
+            case UP -> WallMountLocation.CEILING;
+            case DOWN -> WallMountLocation.FLOOR;
+            default -> WallMountLocation.WALL;
+        };
     }
 
     private Direction getFacing(ItemPlacementContext ctx) {
 
         Direction side = ctx.getSide();
 
-        switch (side) {
-            case UP:
-                return Direction.NORTH;
-            case DOWN:
-                return Direction.NORTH;
-            default:
-                return side;
-        }
+        return switch (side) {
+            case UP, DOWN -> Direction.NORTH;
+            default -> side;
+        };
     }
 
     @SuppressWarnings("deprecation")

@@ -15,7 +15,7 @@ public class LuminousMiniBlocks {
     public static final Map<modernLights.LuminousColors, Block> MINI_FULL_BLOCKS = new HashMap<>();
 
     // Default block settings
-    private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 12, true);
+    private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 12, true, null);
 
     static {
         // Initialize luminous slabs for each color

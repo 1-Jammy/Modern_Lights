@@ -15,8 +15,8 @@ public class LuminousLights {
     // Map to store mini_lights and ceiling_lights of different colors
     public static final Map<modernLights.LuminousColors, Block> CEILING_LIGHTS = new HashMap<>();
     public static final Map<modernLights.LuminousColors, Block> MINI_LIGHTS = new HashMap<>();
-    private static final FabricBlockSettings DefaultCeilingLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 10, true);
-    private static final FabricBlockSettings DefaultMiniLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 8, true);
+    private static final FabricBlockSettings DefaultCeilingLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 10, true, null);
+    private static final FabricBlockSettings DefaultMiniLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 8, true, null);
 
 
     static {

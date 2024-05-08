@@ -5,17 +5,17 @@ import com.jammy1.modernlights.custom.shapes.LuminousBlock;
 import com.jammy1.modernlights.modernLights;
 import com.jammy1.modernlights.modernLights.LuminousColors;
 import com.jammy1.modernlights.util.Util;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.sound.BlockSoundGroup;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.jammy1.modernlights.util.DefaultBlockSettings.defaultAndesiteFrameSetting;
+import static com.jammy1.modernlights.util.DefaultBlockSettings.defaultLuminousBlockSetting;
+
 public class LuminousBlocks {
 
-    public static final Block ANDESITE_FRAME = Util.registerBlocks("andesite_frame", DefaultAndesiteFrameSettings());
+    public static final Block ANDESITE_FRAME = Util.registerBlocks("andesite_frame", new AndesiteFrame(defaultAndesiteFrameSetting()));
 
     // Map to store mini_blocks of different colors
     public static final Map<LuminousColors, Block> LUMINOUS_BLOCKS = new HashMap<>();
@@ -39,17 +39,9 @@ public class LuminousBlocks {
         }
     }
 
-    private static Block DefaultAndesiteFrameSettings() {
-        return new AndesiteFrame(
-                FabricBlockSettings.of(Material.STONE)
-                        .sounds(BlockSoundGroup.METAL)
-                        .strength(5.0F, 5.0F));
-    }
-
     // Method to create mini_blocks
     private static Block createLuminousBlock(String name, boolean isFull, LuminousColors color) {
-        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null,
-                new LuminousBlock(Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousBlock.LIT, 15, false, color)));
+        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new LuminousBlock(defaultLuminousBlockSetting(color)));
     }
 
     public static Block getLuminousBLock(LuminousColors color) {

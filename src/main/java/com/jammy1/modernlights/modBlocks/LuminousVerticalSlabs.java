@@ -1,6 +1,5 @@
 package com.jammy1.modernlights.modBlocks;
 
-import com.jammy1.modernlights.custom.shapes.LuminousSlabBlock;
 import com.jammy1.modernlights.custom.shapes.LuminousVerticalSlabBlock;
 import com.jammy1.modernlights.modernLights;
 import com.jammy1.modernlights.modernLights.LuminousColors;
@@ -9,6 +8,8 @@ import net.minecraft.block.Block;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.jammy1.modernlights.util.DefaultBlockSettings.defaultLuminousVerticalSlabSetting;
 
 public class LuminousVerticalSlabs {
 
@@ -37,9 +38,7 @@ public class LuminousVerticalSlabs {
 
     // Method to create luminous slab block
     private static Block createLuminousSlab(String name, boolean isFull, LuminousColors color) {
-        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new LuminousVerticalSlabBlock(
-                Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false, color)
-        ));
+        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new LuminousVerticalSlabBlock(defaultLuminousVerticalSlabSetting(color)));
     }
 
     // Access Mini Luminous Blocks [just in case]

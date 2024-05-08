@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static com.jammy1.modernlights.modernLights.LuminousColors;
 import static com.jammy1.modernlights.modernLights.fullInfo;
+import static com.jammy1.modernlights.util.DefaultBlockSettings.defaultLuminousSlabSetting;
 
 public class LuminousSlabs {
 
@@ -36,9 +37,7 @@ public class LuminousSlabs {
 
     // Method to create luminous slab block
     private static Block createLuminousSlab(String name, boolean isFull, LuminousColors color) {
-        return Util.registerBlocks(name, isFull ? fullInfo : null, new LuminousSlabBlock(
-                Util.CREATE_BLOCK_SETTINGS(2.5f, 5.0f, LuminousSlabBlock.LIT, 15, false, color)
-        ));
+        return Util.registerBlocks(name, isFull ? fullInfo : null, new LuminousSlabBlock(defaultLuminousSlabSetting(color)));
     }
 
     // Access Mini Luminous Blocks [just in case]

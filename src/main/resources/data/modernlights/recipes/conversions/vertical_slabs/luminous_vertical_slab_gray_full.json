@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "modernlights:luminous_vertical_slab_gray_full"
+    }
+  ],
+  "result": {
+    "item": "modernlights:luminous_vertical_slab_gray",
+    "count": 1
+  },
+  "group": "luminous_vertical_slab_full_conv"
+}

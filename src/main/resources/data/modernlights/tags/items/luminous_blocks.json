@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:luminous_block",
+    "modernlights:luminous_block_light_gray",
+    "modernlights:luminous_block_gray",
+    "modernlights:luminous_block_black",
+    "modernlights:luminous_block_brown",
+    "modernlights:luminous_block_red",
+    "modernlights:luminous_block_orange",
+    "modernlights:luminous_block_yellow",
+    "modernlights:luminous_block_lime",
+    "modernlights:luminous_block_green",
+    "modernlights:luminous_block_cyan",
+    "modernlights:luminous_block_light_blue",
+    "modernlights:luminous_block_blue",
+    "modernlights:luminous_block_purple",
+    "modernlights:luminous_block_magenta",
+    "modernlights:luminous_block_pink"
+  ]
+}

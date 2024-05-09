@@ -1,0 +1,29 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_blue",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:luminous_slab_blue"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/slabs/luminous_slab_blue",
+      "modernlights:conversions/slabs/luminous_slab_blue_full",
+      "modernlights:stonecutter/panel/from_slab/panel_blue"
+    ]
+  }
+}

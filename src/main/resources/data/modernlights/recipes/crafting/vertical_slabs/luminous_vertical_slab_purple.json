@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#","#","#"
+  ],
+  "key": {
+    "#": {
+      "item": "modernlights:luminous_block_purple"
+    }
+  },
+  "result": {
+    "item": "modernlights:luminous_vertical_slab_purple",
+    "count": 6
+  },
+  "group": "luminous_vertical_slab"
+}

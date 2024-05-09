@@ -1,0 +1,8 @@
+{
+  "parent": "modernlights:template/template_panel",
+  "textures": {
+    "0": "modernlights:block/blocks/on/luminous_block_red",
+    "1": "modernlights:block/panel/on/panel_back",
+    "particle": "modernlights:block/blocks/on/luminous_block_red"
+  }
+}

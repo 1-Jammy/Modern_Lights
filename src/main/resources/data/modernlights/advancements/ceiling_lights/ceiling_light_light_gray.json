@@ -1,0 +1,28 @@
+{
+  "parent": "modernlights:panels/panel_light_gray",
+  "criteria": {
+    "has_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:ceiling_light_light_gray"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/ceiling_light_light_gray",
+      "modernlights:conversions/mini_light_light_gray"
+    ]
+  }
+}

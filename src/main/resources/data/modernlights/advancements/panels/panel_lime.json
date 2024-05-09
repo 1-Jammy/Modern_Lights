@@ -1,0 +1,30 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_lime",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_lime"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_lime",
+      "modernlights:stonecutter/mini_lights/mini_light_lime",
+      "modernlights:conversions/panels/panel_small_lime",
+      "modernlights:conversions/panels/panel_lime"
+    ]
+  }
+}

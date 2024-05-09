@@ -1,0 +1,32 @@
+{
+  "parent": "modernlights:luminous_block_recipe",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:luminous_block_green_full"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:crafting/slabs/luminous_slab_green_full",
+      "modernlights:conversions/blocks/luminous_block_green_full",
+      "modernlights:crafting/vertical_slabs/luminous_vertical_slab_green_full",
+      "modernlights:stonecutter/mini_blocks/mini_luminous_block_green_full",
+      "modernlights:stonecutter/slabs/luminous_slab_green_full",
+      "modernlights:stonecutter/vertical_slabs/luminous_vertical_slab_green_full"
+    ]
+  }
+}

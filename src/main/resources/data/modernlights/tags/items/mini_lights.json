@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:mini_light",
+    "modernlights:mini_light_light_gray",
+    "modernlights:mini_light_gray",
+    "modernlights:mini_light_black",
+    "modernlights:mini_light_brown",
+    "modernlights:mini_light_red",
+    "modernlights:mini_light_orange",
+    "modernlights:mini_light_yellow",
+    "modernlights:mini_light_lime",
+    "modernlights:mini_light_green",
+    "modernlights:mini_light_cyan",
+    "modernlights:mini_light_light_blue",
+    "modernlights:mini_light_blue",
+    "modernlights:mini_light_purple",
+    "modernlights:mini_light_magenta",
+    "modernlights:mini_light_pink"
+  ]
+}

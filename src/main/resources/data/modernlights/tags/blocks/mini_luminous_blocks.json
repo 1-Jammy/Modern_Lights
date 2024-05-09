@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:mini_luminous_block",
+    "modernlights:mini_luminous_block_light_gray",
+    "modernlights:mini_luminous_block_gray",
+    "modernlights:mini_luminous_block_black",
+    "modernlights:mini_luminous_block_brown",
+    "modernlights:mini_luminous_block_red",
+    "modernlights:mini_luminous_block_orange",
+    "modernlights:mini_luminous_block_yellow",
+    "modernlights:mini_luminous_block_lime",
+    "modernlights:mini_luminous_block_green",
+    "modernlights:mini_luminous_block_cyan",
+    "modernlights:mini_luminous_block_light_blue",
+    "modernlights:mini_luminous_block_blue",
+    "modernlights:mini_luminous_block_purple",
+    "modernlights:mini_luminous_block_magenta",
+    "modernlights:mini_luminous_block_pink"
+  ]
+}

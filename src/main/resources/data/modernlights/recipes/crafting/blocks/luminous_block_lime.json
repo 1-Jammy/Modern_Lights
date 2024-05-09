@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#G#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "tag": "modernlights:luminous_blocks"
+    },
+    "G": {
+      "item": "minecraft:lime_dye"
+    }
+  },
+  "result": {
+    "item": "modernlights:luminous_block_lime",
+    "count": 8
+  },
+  "group": "luminous_block_craft"
+}

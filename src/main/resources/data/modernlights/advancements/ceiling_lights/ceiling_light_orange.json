@@ -1,0 +1,28 @@
+{
+  "parent": "modernlights:panels/panel_orange",
+  "criteria": {
+    "has_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:ceiling_light_orange"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/ceiling_light_orange",
+      "modernlights:conversions/mini_light_orange"
+    ]
+  }
+}

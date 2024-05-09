@@ -1,0 +1,29 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_orange",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:luminous_slab_orange"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:conversions/slabs/luminous_slab_orange",
+      "modernlights:conversions/slabs/luminous_slab_orange_full",
+      "modernlights:stonecutter/panel/from_slab/panel_orange"
+    ]
+  }
+}

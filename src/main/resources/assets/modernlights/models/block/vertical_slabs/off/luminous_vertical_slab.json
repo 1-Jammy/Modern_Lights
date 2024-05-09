@@ -1,0 +1,7 @@
+{
+	"parent": "modernlights:template/template_vertical_slab",
+	"textures": {
+		"sides": "modernlights:block/vertical_slabs/off/luminous_vertical_slab",
+		"front": "modernlights:block/blocks/off/luminous_block"
+	}
+}

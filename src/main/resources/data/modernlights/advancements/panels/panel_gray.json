@@ -1,0 +1,30 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_gray",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_gray"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_gray",
+      "modernlights:stonecutter/mini_lights/mini_light_gray",
+      "modernlights:conversions/panels/panel_small_gray",
+      "modernlights:conversions/panels/panel_gray"
+    ]
+  }
+}

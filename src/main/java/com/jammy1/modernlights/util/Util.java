@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
@@ -78,9 +79,9 @@ public class Util {
     }
 
     //Make the block settings for the blocks
-    public static FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque) {
+    public static FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque, modernLights.LuminousColors color) {
 
-        FabricBlockSettings settings = FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(hardness, resistance);
+        FabricBlockSettings settings = FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(hardness, resistance).mapColor(getMapColor(color));
 
         if (isNonOpaque) {
             return settings.luminance((state) -> state.get(property) ? lit : 0).pistonBehavior(PistonBehavior.DESTROY).nonOpaque();
@@ -122,5 +123,29 @@ public class Util {
                 return VoxelShapes.fullCube();
             }
         }
+    }
+
+    public static MapColor getMapColor(@Nullable modernLights.LuminousColors color) {
+        if (color == null) {
+            return MapColor.CLEAR;
+        }
+        return switch (color) {
+            case LIGHT_GRAY -> MapColor.LIGHT_GRAY;
+            case GRAY -> MapColor.GRAY;
+            case BLACK -> MapColor.BLACK;
+            case BROWN -> MapColor.BROWN;
+            case RED -> MapColor.RED;
+            case ORANGE -> MapColor.ORANGE;
+            case YELLOW -> MapColor.YELLOW;
+            case LIME -> MapColor.LIME;
+            case GREEN -> MapColor.GREEN;
+            case CYAN -> MapColor.CYAN;
+            case LIGHT_BLUE -> MapColor.LIGHT_BLUE;
+            case BLUE -> MapColor.BLUE;
+            case PURPLE -> MapColor.PURPLE;
+            case MAGENTA -> MapColor.MAGENTA;
+            case PINK -> MapColor.PINK;
+            default -> MapColor.WHITE;
+        };
     }
 }

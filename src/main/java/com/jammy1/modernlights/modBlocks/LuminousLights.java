@@ -3,8 +3,8 @@ package com.jammy1.modernlights.modBlocks;
 import com.jammy1.modernlights.custom.shapes.CeilingLightBlock;
 import com.jammy1.modernlights.custom.shapes.MiniLightBlock;
 import com.jammy1.modernlights.modernLights;
+import com.jammy1.modernlights.util.DefaultBlockSettings;
 import com.jammy1.modernlights.util.Util;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 
 import java.util.HashMap;
@@ -15,9 +15,6 @@ public class LuminousLights {
     // Map to store mini_lights and ceiling_lights of different colors
     public static final Map<modernLights.LuminousColors, Block> CEILING_LIGHTS = new HashMap<>();
     public static final Map<modernLights.LuminousColors, Block> MINI_LIGHTS = new HashMap<>();
-    private static final FabricBlockSettings DefaultCeilingLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 10, true);
-    private static final FabricBlockSettings DefaultMiniLightSettings = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniLightBlock.LIT, 8, true);
-
 
     static {
         // Initialize blocks for each color
@@ -39,7 +36,7 @@ public class LuminousLights {
 
     // Method to create panels
     private static Block createBlock(String name, boolean isMiniLight) {
-        return Util.registerBlocks(name, isMiniLight ? new MiniLightBlock(DefaultMiniLightSettings) : new CeilingLightBlock(DefaultCeilingLightSettings));
+        return Util.registerBlocks(name, isMiniLight ? new MiniLightBlock(DefaultBlockSettings.DEFAULT_MINI_LIGHT_SETTINGS) : new CeilingLightBlock(DefaultBlockSettings.DEFAULT_CEILING_LIGHT_SETTINGS));
     }
 
     // Access Ceiling Lights and Mini Lights by color [just in case]

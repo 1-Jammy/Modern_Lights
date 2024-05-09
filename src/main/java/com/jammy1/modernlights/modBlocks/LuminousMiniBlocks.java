@@ -3,19 +3,17 @@ package com.jammy1.modernlights.modBlocks;
 import com.jammy1.modernlights.custom.shapes.MiniBlock;
 import com.jammy1.modernlights.modernLights;
 import com.jammy1.modernlights.util.Util;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.jammy1.modernlights.util.DefaultBlockSettings.DEFAULT_MINI_BLOCK_SETTINGS;
+
 public class LuminousMiniBlocks {
     // Map to store mini_blocks of different colors
     public static final Map<modernLights.LuminousColors, Block> MINI_BLOCKS = new HashMap<>();
     public static final Map<modernLights.LuminousColors, Block> MINI_FULL_BLOCKS = new HashMap<>();
-
-    // Default block settings
-    private static final FabricBlockSettings DEFAULT_SETTINGS = Util.CREATE_BLOCK_SETTINGS(2.0f, 4.0f, MiniBlock.LIT, 12, true);
 
     static {
         // Initialize luminous slabs for each color
@@ -37,7 +35,7 @@ public class LuminousMiniBlocks {
 
     // Method to create mini_blocks
     private static Block createMiniBlock(String name, boolean isFull) {
-        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new MiniBlock(DEFAULT_SETTINGS));
+        return Util.registerBlocks(name, isFull ? modernLights.fullInfo : null, new MiniBlock(DEFAULT_MINI_BLOCK_SETTINGS));
     }
 
     // Access Mini Luminous Blocks [just in case]

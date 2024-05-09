@@ -1,0 +1,30 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_yellow",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_yellow"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_yellow",
+      "modernlights:stonecutter/mini_lights/mini_light_yellow",
+      "modernlights:conversions/panels/panel_small_yellow",
+      "modernlights:conversions/panels/panel_yellow"
+    ]
+  }
+}

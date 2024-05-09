@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:panel_purple"
+  },
+  "result": "modernlights:mini_light_purple",
+  "count": 16
+}

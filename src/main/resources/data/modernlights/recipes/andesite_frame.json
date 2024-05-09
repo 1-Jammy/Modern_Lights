@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:polished_andesite"
+    },
+    "X": {
+      "item": "minecraft:lever"
+    }
+  },
+  "result": {
+    "item": "modernlights:andesite_frame",
+    "count": 8
+  },
+  "group": "andesite_frame_craft"
+}

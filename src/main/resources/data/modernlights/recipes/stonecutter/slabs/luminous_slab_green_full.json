@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "modernlights:luminous_block_green_full"
+  },
+  "result": "modernlights:luminous_slab_green_full",
+  "count": 2
+}

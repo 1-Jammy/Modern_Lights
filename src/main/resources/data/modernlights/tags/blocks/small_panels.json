@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:panel_small",
+    "modernlights:panel_small_light_gray",
+    "modernlights:panel_small_gray",
+    "modernlights:panel_small_black",
+    "modernlights:panel_small_brown",
+    "modernlights:panel_small_red",
+    "modernlights:panel_small_orange",
+    "modernlights:panel_small_yellow",
+    "modernlights:panel_small_lime",
+    "modernlights:panel_small_green",
+    "modernlights:panel_small_cyan",
+    "modernlights:panel_small_light_blue",
+    "modernlights:panel_small_blue",
+    "modernlights:panel_small_purple",
+    "modernlights:panel_small_magenta",
+    "modernlights:panel_small_pink"
+  ]
+}

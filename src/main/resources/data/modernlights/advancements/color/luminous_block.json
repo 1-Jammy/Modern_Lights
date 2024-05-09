@@ -1,0 +1,28 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_pink",
+  "criteria": {
+    "has_dye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:white_dye"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_dye"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:crafting/blocks/luminous_block",
+      "modernlights:crafting/blocks/luminous_block_full"
+    ]
+  }
+}

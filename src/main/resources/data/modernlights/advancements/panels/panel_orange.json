@@ -1,0 +1,30 @@
+{
+  "parent": "modernlights:luminous_blocks/luminous_block_variants_orange",
+  "criteria": {
+    "has_item": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "modernlights:panel_orange"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_item"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "modernlights:stonecutter/ceiling_lights/ceiling_light_orange",
+      "modernlights:stonecutter/mini_lights/mini_light_orange",
+      "modernlights:conversions/panels/panel_small_orange",
+      "modernlights:conversions/panels/panel_orange"
+    ]
+  }
+}

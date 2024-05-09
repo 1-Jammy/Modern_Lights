@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#modernlights:panels",
+    "#modernlights:mini_lights",
+    "#modernlights:small_panels",
+    "#modernlights:luminous_slabs",
+    "#modernlights:luminous_slabs_full",
+    "#modernlights:luminous_vertical_slabs",
+    "#modernlights:luminous_vertical_slabs_full",
+    "#modernlights:ceiling_lights",
+    "#modernlights:luminous_blocks",
+    "#modernlights:mini_luminous_blocks",
+    "#modernlights:luminous_blocks_full",
+    "#modernlights:mini_luminous_blocks_full"
+  ]
+}

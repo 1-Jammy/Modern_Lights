@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "modernlights:ceiling_light",
+    "modernlights:ceiling_light_light_gray",
+    "modernlights:ceiling_light_gray",
+    "modernlights:ceiling_light_black",
+    "modernlights:ceiling_light_brown",
+    "modernlights:ceiling_light_red",
+    "modernlights:ceiling_light_orange",
+    "modernlights:ceiling_light_yellow",
+    "modernlights:ceiling_light_lime",
+    "modernlights:ceiling_light_green",
+    "modernlights:ceiling_light_cyan",
+    "modernlights:ceiling_light_light_blue",
+    "modernlights:ceiling_light_blue",
+    "modernlights:ceiling_light_purple",
+    "modernlights:ceiling_light_magenta",
+    "modernlights:ceiling_light_pink"
+  ]
+}

@@ -3,11 +3,12 @@ package com.jammy1.modernlights.util;
 import com.jammy1.modernlights.modernLights;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -73,9 +74,13 @@ public class Util {
     }
 
     //Make the block settings for the blocks
-    public static final FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque) {
+    public static final FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque, modernLights.LuminousColors mapColor) {
 
-        FabricBlockSettings settings = FabricBlockSettings.of(Material.METAL).breakByTool(FabricToolTags.PICKAXES).sounds(BlockSoundGroup.METAL).strength(hardness, resistance);
+        final PistonBehavior pistonBehavior = isNonOpaque ? PistonBehavior.DESTROY : PistonBehavior.NORMAL;
+
+        FabricBlockSettings settings = FabricBlockSettings.of(
+                        new Material(getMapColor(mapColor), false, !isNonOpaque, true, false, true, false, pistonBehavior))
+                .sounds(BlockSoundGroup.METAL).strength(hardness, resistance);
 
         if (isNonOpaque) {
             return settings = settings.luminance((state) -> state.get(property) ? lit : 0).nonOpaque();
@@ -100,20 +105,48 @@ public class Util {
     public static VoxelShape voxelShapeMaker(Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
 
         switch (face) {
-            case WALL : {
+            case WALL: {
                 switch (dir) {
-                    case SOUTH : return South;
-                    case EAST : return East;
-                    case WEST : return West;
-                    default : return North;
+                    case SOUTH:
+                        return South;
+                    case EAST:
+                        return East;
+                    case WEST:
+                        return West;
+                    default:
+                        return North;
                 }
             }
-            case CEILING : {
+            case CEILING: {
                 return Up;
             }
-            default : {
+            default: {
                 return Down;
             }
+        }
+    }
+
+    public static MapColor getMapColor(@Nullable modernLights.LuminousColors color) {
+        if (color == null) {
+            return MapColor.CLEAR;
+        }
+        switch (color) {
+            case LIGHT_GRAY : return MapColor.LIGHT_GRAY;
+            case GRAY : return MapColor.GRAY;
+            case BLACK : return MapColor.BLACK;
+            case BROWN : return MapColor.BROWN;
+            case RED : return MapColor.RED;
+            case ORANGE : return MapColor.ORANGE;
+            case YELLOW : return MapColor.YELLOW;
+            case LIME : return MapColor.LIME;
+            case GREEN : return MapColor.GREEN;
+            case CYAN : return MapColor.CYAN;
+            case LIGHT_BLUE : return MapColor.LIGHT_BLUE;
+            case BLUE : return MapColor.BLUE;
+            case PURPLE : return MapColor.PURPLE;
+            case MAGENTA : return MapColor.MAGENTA;
+            case PINK : return MapColor.PINK;
+            default : return MapColor.WHITE;
         }
     }
 }

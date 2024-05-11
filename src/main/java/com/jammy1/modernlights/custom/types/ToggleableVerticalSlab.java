@@ -1,6 +1,7 @@
 package com.jammy1.modernlights.custom.types;
 
 import com.jammy1.modernlights.util.Util;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -31,7 +32,7 @@ import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Waterloggable {
-
+    public static final MapCodec<ToggleableVerticalSlab> CODEC = createCodec(ToggleableVerticalSlab::new);
     public static final EnumProperty<VerticalSlabType> TYPE;
     public static final BooleanProperty WATERLOGGED;
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
@@ -57,6 +58,11 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
                 .with(LIT, true));
     }
 
+    @Override
+    protected MapCodec<? extends ToggleableVerticalSlab> getCodec() {
+        return null;
+    }
+
     @SuppressWarnings("deprecation")
     @Override
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
@@ -72,13 +78,12 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
 
     @SuppressWarnings("deprecation")
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.makeClickSound(state, world, pos, hand, CLICKED);
+        Util.makeClickSound(state, world, pos, Hand.MAIN_HAND, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 
@@ -217,12 +222,8 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
         return false;
     }
 
-    @Override
-    public boolean canFillWithFluid(BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
-        if (state.get(TYPE) != VerticalSlabType.DOUBLE) {
-            return Waterloggable.super.canFillWithFluid(world, pos, state, fluid);
-        }
-        return false;
+    public boolean canFillWithFluid(@Nullable PlayerEntity player, BlockView world, BlockPos pos, BlockState state, Fluid fluid) {
+        return state.get(TYPE) != VerticalSlabType.DOUBLE ? Waterloggable.super.canFillWithFluid(player, world, pos, state, fluid) : false;
     }
 
     @SuppressWarnings("deprecation")
@@ -235,7 +236,6 @@ public class ToggleableVerticalSlab extends HorizontalFacingBlock implements Wat
     }
 
     @SuppressWarnings("deprecation")
-    @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         switch (type) {
             case LAND, AIR -> {

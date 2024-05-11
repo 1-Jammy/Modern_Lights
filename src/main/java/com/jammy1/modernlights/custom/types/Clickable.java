@@ -21,11 +21,11 @@ public class Clickable extends Block {
         setDefaultState(getStateManager().getDefaultState().with(CLICKED, false));
     }
 
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
 
-        Util.makeClickSound(state, world, pos, hand, CLICKED);
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+
+        Util.makeClickSound(state, world, pos, Hand.MAIN_HAND, CLICKED);
         return ActionResult.SUCCESS;
     }
 

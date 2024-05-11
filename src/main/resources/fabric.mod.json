@@ -18,10 +18,10 @@
       "com.jammy1.modernlights.modernLights"
     ]
   },
-  "depends": {
-    "fabricloader": ">=0.15.11",
-    "fabric": "*",
-    "minecraft": "~1.20",
-    "java": ">=17"
-  }
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.20.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
 }

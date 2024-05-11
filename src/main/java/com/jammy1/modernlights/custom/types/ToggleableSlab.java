@@ -61,14 +61,12 @@ public class ToggleableSlab extends SlabBlock {
     }
 
     @SuppressWarnings("deprecation")
-    @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.makeClickSound(state, world, pos, hand, CLICKED);
+        Util.makeClickSound(state, world, pos, Hand.MAIN_HAND, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 

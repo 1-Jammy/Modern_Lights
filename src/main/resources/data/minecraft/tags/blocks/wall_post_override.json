@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "#modernlights:panels",
     "#modernlights:mini_lights",
     "#modernlights:small_panels",
     "#modernlights:ceiling_lights",

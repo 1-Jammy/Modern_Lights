@@ -1,8 +1,9 @@
 package com.jammy1.modernlights.custom.types;
 
 import com.jammy1.modernlights.util.Util;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -25,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
-
+    public static final MapCodec<ToggleablePlus> CODEC = createCodec(ToggleablePlus::new);
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     public static final BooleanProperty POWERED = BooleanProperty.of("powered");
@@ -38,11 +39,16 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
         super(settings);
         this.setDefaultState((this.stateManager.getDefaultState())
                 .with(FACING, Direction.NORTH)
-                .with(FACE, WallMountLocation.WALL)
+                .with(FACE, BlockFace.WALL)
                 .with(WATERLOGGED, false)
                 .with(POWERED, false)
                 .with(CLICKED, true)
                 .with(LIT, true));
+    }
+
+    @Override
+    protected MapCodec<? extends ToggleablePlus> getCodec() {
+        return null;
     }
 
     @Override
@@ -67,14 +73,14 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
         }
     }
 
-    private WallMountLocation getFace(ItemPlacementContext ctx) {
+    private BlockFace getFace(ItemPlacementContext ctx) {
 
         Direction dir = ctx.getSide().getOpposite();
 
         return switch (dir) {
-            case UP -> WallMountLocation.CEILING;
-            case DOWN -> WallMountLocation.FLOOR;
-            default -> WallMountLocation.WALL;
+            case UP -> BlockFace.CEILING;
+            case DOWN -> BlockFace.FLOOR;
+            default -> BlockFace.WALL;
         };
     }
 
@@ -103,13 +109,12 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
 
     @SuppressWarnings("deprecation")
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand,
-                              BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 
         if (world.isReceivingRedstonePower(pos)) {
             return ActionResult.PASS;
         }
-        Util.makeClickSound(state, world, pos, hand, CLICKED);
+        Util.makeClickSound(state, world, pos, Hand.MAIN_HAND, CLICKED);
         world.setBlockState(pos, state.cycle(CLICKED));
         world.scheduleBlockTick(pos, this, 1);
 
@@ -151,10 +156,10 @@ public class ToggleablePlus extends WallMountedBlock implements Waterloggable {
     }
 
     protected static Direction attachedDirection(BlockState state) {
-        if (state.get(FACE)==WallMountLocation.WALL){
+        if (state.get(FACE)==BlockFace.WALL){
             return state.get(FACING);
         }
-        return state.get(FACE) == WallMountLocation.FLOOR ? Direction.UP : Direction.DOWN;
+        return state.get(FACE) == BlockFace.FLOOR ? Direction.UP : Direction.DOWN;
     }
 
 

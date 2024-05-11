@@ -1,15 +1,13 @@
 package com.jammy1.modernlights.util;
 
 import com.jammy1.modernlights.modernLights;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.MapColor;
-import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.block.enums.BlockFace;
 import net.minecraft.block.piston.PistonBehavior;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -54,7 +52,7 @@ public class Util {
 
     private static Item registerBlockItem(String name, Block block) {
 
-        Item item = Registry.register(Registries.ITEM, new Identifier(modernLights.MOD_ID, name), new BlockItem(block, new FabricItemSettings())); //Creates a freshly baked new item for the provided block
+        Item item = Registry.register(Registries.ITEM, new Identifier(modernLights.MOD_ID, name), new BlockItem(block, new Item.Settings())); //Creates a freshly baked new item for the provided block
 
         ItemGroupEvents.modifyEntriesEvent(modernLights.ITEM_GROUP).register(entries -> entries.add(item)); //adds freshly created item to the item group
 
@@ -65,10 +63,10 @@ public class Util {
     //Register blocks with only one tooltip
     private static Item registerBlockItem(String name, String info, Block block) {
 
-        Item item = Registry.register(Registries.ITEM, new Identifier(modernLights.MOD_ID, name), new BlockItem(block, new FabricItemSettings()) {
+        Item item = Registry.register(Registries.ITEM, new Identifier(modernLights.MOD_ID, name), new BlockItem(block, new Item.Settings()) {
 
-            @Override //add tooltip for this item
-            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+             //add tooltip for this item
+            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, Item.TooltipContext context) {
                 tooltip.add(Text.translatable(info));
             }
         });
@@ -79,9 +77,9 @@ public class Util {
     }
 
     //Make the block settings for the blocks
-    public static FabricBlockSettings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque, modernLights.LuminousColors color) {
+    public static AbstractBlock.Settings CREATE_BLOCK_SETTINGS(float hardness, float resistance, BooleanProperty property, int lit, boolean isNonOpaque, modernLights.LuminousColors color) {
 
-        FabricBlockSettings settings = FabricBlockSettings.create().sounds(BlockSoundGroup.METAL).strength(hardness, resistance).mapColor(getMapColor(color));
+        AbstractBlock.Settings settings = AbstractBlock.Settings.create().sounds(BlockSoundGroup.METAL).strength(hardness, resistance).mapColor(getMapColor(color));
 
         if (isNonOpaque) {
             return settings.luminance((state) -> state.get(property) ? lit : 0).pistonBehavior(PistonBehavior.DESTROY).nonOpaque();
@@ -102,7 +100,7 @@ public class Util {
 
 
     //Provide faces for FACING block state
-    public static VoxelShape voxelShapeMaker(Direction dir, WallMountLocation face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
+    public static VoxelShape voxelShapeMaker(Direction dir, BlockFace face, VoxelShape North, VoxelShape South, VoxelShape East, VoxelShape West, VoxelShape Up, VoxelShape Down) {
 
         switch (face) {
             case WALL -> {
